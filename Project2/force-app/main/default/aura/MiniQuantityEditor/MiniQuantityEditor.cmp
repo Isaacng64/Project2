@@ -1,0 +1,37 @@
+<aura:component>
+
+    <aura:attribute name="SelectedQuantity" type="Integer" default="0" description="Used to display the quantity of the selected item in cart/inventory, in your cart" />
+    <div class="c-container">
+        <lightning:layout horizontalAlign="space">
+            <lightning:layoutItem>
+                <div class="custom-box">
+                    <aura:if isTrue="{!v.SelectedQuantity > 0}">
+                        {!'Quantity: ' + v.SelectedQuantity}
+                        <aura:set attribute="else">
+                            No items
+                        </aura:set>
+                    </aura:if>
+                </div>
+                
+            </lightning:layoutItem>
+            
+            <lightning:layoutItem>
+                <div class="custom-box">
+                    <lightning:button variant="destructive" label="-" onclick="{!c.addValue}" value="-1"/>
+
+                    <aura:text value=" Cart " />
+    
+                    <lightning:button variant="success" label="+" onclick="{!c.addValue}" value="1"/>
+                </div>
+                
+            </lightning:layoutItem>
+
+            <lightning:layoutItem>
+                <lightning:button variant="brand" label="View Cart"/>
+            </lightning:layoutItem>
+            
+
+        </lightning:layout>
+    </div>
+    
+</aura:component>	
