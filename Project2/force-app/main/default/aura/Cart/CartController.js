@@ -10,29 +10,26 @@
     },
     init: function (component, event, helper) {
         component.set('v.columns', [
-            {label: 'Opportunity name', fieldName: 'opportunityName', type: 'text'},
-            {label: 'Account name', fieldName: 'accountName', type: 'text'},
-            {label: 'Close date', fieldName: 'closeDate', type: 'date'},
-            {label: 'Confidence', fieldName: 'confidence', type: 'percent'},
-            {label: 'Amount', fieldName: 'amount', type: 'currency', typeAttributes: { currencyCode: 'EUR'}},
-            {label: 'Contact Email', fieldName: 'contact', type: 'email'},
-            {label: 'Contact Phone', fieldName: 'phone', type: 'phone'},
-            {label: 'Website', fieldName: 'website', type: 'url', typeAttributes: { target: '_parent'}},
-            {label: 'Address', fieldName: 'address', type: 'location'}
+            {label: 'Name', fieldName: 'Name', type: 'text'},
+            {label: 'Unit Number', fieldName: 'ProductCode', type: 'text'},
+            {label: 'Description', fieldName: 'Description', type: 'text'}
         ]);
 
-        var fetchData = {
-            opportunityName: "company.companyName",
-            accountName : "name.findName",
-            closeDate : "date.future",
-            amount : "finance.amount",
-            contact: "internet.email",
-            phone : "phone.phoneNumber",
-            website : "internet.url"
-        };
+        //let data = [
+        //    {'Name' : 'one', 'ProductCode' : '5109353', 'Description' : 'lalalaaalaa'},
+        //    {'Name' : 'two', 'ProductCode' : '51034234329353', 'Description' : 'lalaladdddddddddddlaa'},
+        //    {'Name' : 'otewne', 'ProductCode' : '51093353', 'Description' : 'lalalsssssssssssssalaa'},
+        //    {'Name' : 'teeeee', 'ProductCode' : '510931111111111111111153', 'Description' : 'lalalzzzzzzzzzalaa'}
+        //];
 
-        component.set("v.data", fetchData);
-        //helper.fetchData(cmp, fetchData, 100);
+        //component.set("v.data", data);
+
+        // actually load real data not fake data
+        helper.getAllProducts(component, event);
+    },
+    updateSelectedText : function(component, event, helper){
+        let selectedRows = event.getParam('selectedRows');
+        component.set('v.selectedText', selectedRows[0].Name);
     }
 })
 
