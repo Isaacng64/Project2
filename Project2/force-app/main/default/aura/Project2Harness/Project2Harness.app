@@ -1,6 +1,6 @@
 <aura:application extends="force:slds">
 
-    <!--c:MiniQuantityEditor/-->
+    <c:MiniQuantityEditor/>
 
     <c:Cart/>
 

@@ -1,10 +1,12 @@
 <aura:component controller="AuraCartController">
 
+    <aura:attribute name="draftOrderID" default="" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>
+
     <aura:attribute name="bCartConfirmed" default="false" type="Boolean" description="If the cart is confirmed, show the payment and shipping details; otherwise, show the cart to make changes."/>
     <aura:attribute name="bSameShipping" default="false" type="Boolean"/>
 
     <!--<aura:attribute name="data" type="Object"/>-->
-    <aura:attribute name="data" type="Product2[]"/>
+    <aura:attribute name="data"type="Product2[]"/>
     <aura:attribute name="columns" type="List"/>
 
     <aura:attribute name="selectedText" type="string" default="nothing selected"/>
@@ -14,7 +16,9 @@
     <div>
         <aura:if isTrue="{!v.bCartConfirmed == false}">
             <lightning:card title="Items in Cart">
-                <!-- the container element determine the height of the datatable -->
+                <!-- the container element determines the height of the datatable -->
+
+                {!v.draftOrderID}
                 
                 {!v.selectedText}
 

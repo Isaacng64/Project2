@@ -11,5 +11,41 @@ public without sharing class AuraCartController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+
+    
+    @AuraEnabled
+    public static List<Product2> getCartProducts(String orderID){
+        Order a = [SELECT id, (SELECT id, Product2Id FROM OrderItems) FROM Order WHERE id = :orderID];
+
+        //List<String> productNames = new List<String>();
+
+        List<Product2> cartProducts = new List<Product2>();
+        
+        for(integer i = 0; i < a.OrderItems.size(); i++){
+            String theId = (String)a.OrderItems[i].get('Product2Id');
+            Product2 prod = [SELECT ID, Name, ProductCode, Description FROM Product2 WHERE ID = :theId];
+            //productNames.add(prod.Name);
+            cartProducts.add(prod);
+        }
+        
+        //System.debug(productNames);
+
+        return cartProducts; // may want to return other info than strictly the product 2 sobjects if concerned about quantity, which is to do more with the orderitem actually
+        // so perhaps, all you are actually concerned with in queryring the product2 for is the name after all, in which the commented out code is what you need
+        
+    }
+
+    @AuraEnabled
+    public static string initCart(){
+        Order newCart = new Order();
+
+        newCart.Status = 'Draft';
+        newCart.AccountId = '0015f000003NEWxAAO'; // genericWebAcount
+        newCart.MiningSite__c = 'a015f000002sb3HAAQ'; // space comet 2
+        newCart.EffectiveDate = Date.today();
+
+        Insert newCart;
+        return newCart.id;
+    }
     
 }
