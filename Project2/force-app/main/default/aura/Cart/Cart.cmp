@@ -3,10 +3,23 @@
     <aura:attribute name="bCartConfirmed" default="false" type="Boolean" description="If the cart is confirmed, show the payment and shipping details; otherwise, show the cart to make changes."/>
     <aura:attribute name="bSameShipping" default="false" type="Boolean"/>
 
+    <aura:attribute name="data" type="Object"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
     <div>
         <aura:if isTrue="{!v.bCartConfirmed == false}">
             <lightning:card title="Items in Cart">
-
+                <!-- the container element determine the height of the datatable -->
+                <div style="height: 300px">
+                    <lightning:datatable
+                        columns="{! v.columns }"
+                        data="{! v.data }"
+                        keyField="id"
+                        maxRowSelection="1"
+                        onrowselection="{! c.updateSelectedText }"/>
+                </div>
                 <lightning:button variant="success" label="Confirm Cart" onclick="{!c.toggleCart}"/>
             </lightning:card>
 
@@ -19,8 +32,7 @@
                         <lightning:inputField fieldName="Name"/>
                         <lightning:inputField fieldName="Phone"/>
                     </lightning:recordEditForm>
-
-                    
+     
 
                     <lightning:recordEditForm objectApiName="CardPaymentMethod">
                         <lightning:inputField fieldName="InputCardNumber"/>
