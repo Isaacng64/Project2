@@ -1,0 +1,136 @@
+<apex:page standardController="Order"  extensions="OrdersExtension" standardStylesheets="false"> <!-- standardStylesheets="false" -->
+    
+    
+    <apex:stylesheet value="{!$Resource.OrderStyle}" />
+    
+    <apex:form >
+                   
+        <apex:pageBlock title="Orders">
+            
+            <hr />
+            
+            <div class="row">
+                
+                <H1> Order Information</H1>
+                
+                <div class="column1">
+                    
+                    <p>Select the item you want to order.</p>
+            		<apex:inputField value="{!TheOrders.Customer_Orders__c}" required="true"/>
+                                                            
+                </div>
+                
+                <div class="column2">
+                    
+					<p>Quantity</p>
+            		<apex:inputField value="{!TheOrders.Quantity__c}" required="true"/>                    
+                                                            
+                </div>
+                               
+            </div>
+            
+            <hr />
+            
+            <div class="row">
+                
+                <H1> Personal Information</H1>
+                
+                <div class="column1">
+                                       
+                    <p>First Name</p>
+            		<apex:inputField value="{!TheOrders.First_Name__c}" required="true"/>
+            
+           			<p>Last Name</p>           
+            		<apex:inputField value="{!TheOrders.Last_Name__c}" required="true"/>
+                    
+                </div>
+                
+                <div class="column2">
+                    
+                    <p>Email</p>           
+            		<apex:inputField value="{!TheOrders.Email__c}" required="true"/>
+                                               
+                </div>
+                
+            </div>
+            
+            <hr />           
+            
+            <div class="row">
+                
+                <H1>Billing Address</H1>
+                
+                <div class="column1">
+                    
+                    <!-- <p style="text-align:center">Billing Address</p> -->
+                    <p>Street Address</p>
+                    <apex:inputField value="{!TheOrders.Street_Address__c}" required="true"/>
+                    
+                    <p>City</p>
+            		<apex:inputField value="{!TheOrders.City__c}" required="true"/>
+                    
+                    <p>Zip code</p>
+            		<apex:inputField value="{!TheOrders.Zip_Code__c}" required="true"/>
+
+                </div>
+                
+                <div class="column2">
+                    
+					<p>Apt Number</p>
+           			<apex:inputField value="{!TheOrders.Apt_Number__c}"/>
+
+					<p>State</p>
+            		<apex:inputField value="{!TheOrders.States__c}" required="true"/>                    
+                    
+                </div>
+                
+            </div>
+            
+            <hr />
+            
+            <div class="row">
+                
+                <H1>Payment Method</H1>
+                
+                <div class="column1">
+                    
+                    <p>Payment Method</p>
+                    <apex:inputField value="{!TheOrders.Payment_Method__c}" required="true"/>
+                    
+                    <p>Expression Date</p>
+            		<apex:inputField value="{!TheOrders.Experation_Date__c}" required="true"/>
+                    
+                </div>
+                
+                <div class="column2">
+                    
+                    <p>Card Number</p>
+            		<apex:inputField value="{!TheOrders.Card_number__c}" required="true"/>
+                    
+                    <p>Security Number</p>
+            		<apex:inputField value="{!TheOrders.Security_Number__c}" required="true"/>
+                    
+                </div>
+                
+            </div>
+            
+            <hr />
+            
+                <apex:pageBlockButtons >
+                    <div class="button">
+                  
+                		<apex:commandButton action="{!save}" value="Submit" />
+                        
+                    </div>
+                
+	            </apex:pageBlockButtons>
+                
+            
+            
+            
+     
+        </apex:pageBlock>
+            
+    </apex:form>
+    
+</apex:page>

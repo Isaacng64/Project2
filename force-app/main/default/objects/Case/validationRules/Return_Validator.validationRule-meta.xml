@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Return_Validator</fullName>
+    <active>true</active>
+    <description>Validates the condition of the returned unit</description>
+    <errorConditionFormula>Units_Returned__c  = &apos;Opened&apos;</errorConditionFormula>
+    <errorDisplayField>Return_Unit_Refund__c</errorDisplayField>
+    <errorMessage>This unit was opened. Therefore, a full refund will not be applied</errorMessage>
+</ValidationRule>

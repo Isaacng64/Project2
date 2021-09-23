@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Unit_Validator</fullName>
+    <active>true</active>
+    <errorConditionFormula>Unit__c  &lt;&gt; &apos;Luxury Black, Luxury White, Bold Black, Bold White, Bold Black Chrome, Bold White Chrome, Boss Mini&apos;</errorConditionFormula>
+    <errorDisplayField>Unit__c</errorDisplayField>
+    <errorMessage>Unit does not exist</errorMessage>
+</ValidationRule>

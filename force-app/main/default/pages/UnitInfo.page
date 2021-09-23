@@ -1,0 +1,18 @@
+<apex:page controller="UnitExtension" id="thePage" standardStylesheets="false">
+    <apex:stylesheet value="{!$Resource.customStyleSheet}" />
+    
+    <div class="form">
+    
+        <apex:pageBlock >
+        <apex:repeat value="{!Percentages}" var="Per" id="theRepeat">
+        <apex:outputText value="{!Per.Name}" id="Name"/><br/>
+        <apex:outputText value="{!Per.Quantity}" id="Quantity"/><br/>
+        <apex:outputText value="{!Per.Percentage}" id="Percentage"/><br/>
+        </apex:repeat>
+        </apex:pageBlock>
+    
+    
+    </div>
+    
+    
+</apex:page>

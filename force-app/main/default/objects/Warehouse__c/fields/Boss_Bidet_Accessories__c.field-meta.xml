@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Boss_Bidet_Accessories__c</fullName>
+    <description>Accessories at Boss Bidet</description>
+    <externalId>false</externalId>
+    <label>Boss Bidet Accessories</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Gold Knobs</fullName>
+                <default>false</default>
+                <label>Gold Knobs</label>
+            </value>
+            <value>
+                <fullName>Chrome Knobs</fullName>
+                <default>false</default>
+                <label>Chrome Knobs</label>
+            </value>
+            <value>
+                <fullName>PAW</fullName>
+                <default>false</default>
+                <label>PAW</label>
+            </value>
+            <value>
+                <fullName>SSA</fullName>
+                <default>false</default>
+                <label>SSA</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

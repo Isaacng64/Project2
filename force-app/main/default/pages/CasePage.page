@@ -1,0 +1,41 @@
+<apex:page standardController="Case" extensions="CaseExtension" standardStylesheets="false">
+    <apex:stylesheet value="{!$Resource.customStyleSheet}" />
+    <apex:form >
+        <div class="form">
+        <apex:pageBlock title="Customer Service Cases for Refunds">
+            <hr />
+            <p>Please fill out all of the information about your case. We will reach out within 48 hours.</p>
+            <table class="table">
+                <tr>
+                    <td><p>Account Name: </p></td>
+                    <td><apex:inputField value="{!newCase.AccountId}" required="true"/></td>
+                </tr>
+                <tr>
+                    <td><p>Contact Name: </p></td>
+                    <td><apex:inputField value="{!newCase.ContactId}" required="true"/></td>
+                </tr>
+                <tr>
+                    <td><p>Type of Case: </p></td>
+                    <td><apex:inputField value="{!newCase.Type}" /></td>
+                </tr>
+                <tr>
+                    <td><p>Reason for Case: </p></td>
+                    <td><apex:inputField value="{!newCase.Reason}" /></td>
+                </tr>
+                <tr>
+                    <td><p>Subject: </p></td>
+                    <td><apex:inputField value="{!newCase.Subject}" /></td>
+                </tr>
+                <tr>
+                    <td><p>Description of Case: </p></td>
+                    <td><apex:inputField value="{!newCase.Description}" required="true"/></td>
+                </tr>
+            </table>
+            <br />
+             <hr />
+            <apex:pageBlockButtons location="bottom"> <apex:commandButton action="{!save}" value="Submit Case"/></apex:pageBlockButtons>
+        </apex:pageBlock>
+        </div>
+       
+    </apex:form>
+</apex:page>

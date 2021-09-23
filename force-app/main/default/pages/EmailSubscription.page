@@ -1,0 +1,17 @@
+<apex:page standardController="Contact" extensions="EmailExtension" standardStylesheets="false">
+    <apex:stylesheet value="{!$Resource.customStyleSheet}" />
+   <apex:form >
+     <div class="form">
+    <apex:pageBlock >
+    <apex:pageBlockSection >
+     <apex:inputField value="{!Contact.FirstName}"/>
+     <apex:inputField value="{!Contact.LastName}"/>
+     <apex:inputField value="{!Contact.Email}"/>
+     </apex:pageBlockSection>
+<apex:pageBlockButtons location="bottom">
+     <apex:commandButton action="{!save}" value="Save"/>
+     </apex:pageBlockButtons>
+    </apex:pageBlock>
+         </div>
+   </apex:form>
+</apex:page>

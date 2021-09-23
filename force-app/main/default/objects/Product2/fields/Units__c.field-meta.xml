@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Units__c</fullName>
+    <description>These are the units in the warehouse</description>
+    <externalId>false</externalId>
+    <label>Units</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Lux Black</fullName>
+                <default>false</default>
+                <label>Lux Black</label>
+            </value>
+            <value>
+                <fullName>Lux White</fullName>
+                <default>false</default>
+                <label>Lux White</label>
+            </value>
+            <value>
+                <fullName>Bold White</fullName>
+                <default>false</default>
+                <label>Bold White</label>
+            </value>
+            <value>
+                <fullName>Bold Black</fullName>
+                <default>false</default>
+                <label>Bold Black</label>
+            </value>
+            <value>
+                <fullName>Bold White Chrome</fullName>
+                <default>false</default>
+                <label>Bold White Chrome</label>
+            </value>
+            <value>
+                <fullName>Bold Black Chrome</fullName>
+                <default>false</default>
+                <label>Bold Black Chrome</label>
+            </value>
+            <value>
+                <fullName>Bidet Mini</fullName>
+                <default>false</default>
+                <label>Bidet Mini</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

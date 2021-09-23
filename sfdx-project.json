@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+   {
+    "path": "force-app",
+    "default": true
+   }
+  ],
+  "name": "DeployTest",
+  "namespace": "",
+  "sfdcLoginUrl": "https://cunning-badger-kbl1pm-dev-ed.my.salesforce.com/",
+  "sourceApiVersion": "52.0"
+ }
