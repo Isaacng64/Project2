@@ -1,5 +1,45 @@
 public without sharing class AuraCartController {
 
+    /*
+    @AuraEnabled // get an order item id if one exists in your cart for the given product type, and if not, return empty string
+    public static string getExistingOrderItem(String orderID, String productID){
+
+        OrderItem item = [SELECT ID, product2id, order FROM OrderItem WHERE order = :orderID AND product2id = :productID];
+
+        if (! item.equals(null)){
+            return item.id;
+        }else{
+            return '';
+        }
+    }
+    */
+
+    @AuraEnabled
+    public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
+
+        OrderItem item = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+
+        if (item != null){
+            // item already in cart at least once
+            item.quantity = amount;
+
+        }else{
+            //item not at all in cart yet
+            item = new OrderItem();
+            item.quantity = amount;
+            item.product2id = productOrOrderItemID;
+            item.orderId = orderID;
+        }
+        try{
+            Upsert item;
+        }
+        catch(Exception e){
+            throw new AuraHandledException(e.getMessage());
+        }
+        
+    }
+
+    /* // get all products is not used for my shopping cart module but rather vicky's catalog
     @AuraEnabled
     public static List<Product2> getProducts(){
         try {
@@ -11,6 +51,7 @@ public without sharing class AuraCartController {
             throw new AuraHandledException(e.getMessage());
         }
     }
+    */
 
     
     @AuraEnabled
@@ -70,13 +111,15 @@ public without sharing class AuraCartController {
         Update a;
     }
 
-
+    //public static Integer numWrappers = 0;
     public class Wrapper{
 
-        //@AuraEnabled
-        //public Product2 prod; // what is difference from this and using/not using {set;get;} ????
-        //@AuraEnabled
-        //public OrderItem oi;
+        /*
+        @AuraEnabled
+        public Product2 prod; // what is difference from this and using/not using {set;get;} ????
+        @AuraEnabled
+        public OrderItem oi;
+        */
 
         @AuraEnabled
         public String Name;
@@ -86,15 +129,26 @@ public without sharing class AuraCartController {
         public String ProductCode;
         @AuraEnabled
         public Integer Quantity;
+        @AuraEnabled
+        public String OrderItemID;
+        @AuraEnabled
+        public String ProductID;
+        @AuraEnabled
+        public String id;
 
         public Wrapper(Product2 prod, OrderItem oi){
-            this.prod = prod;
-            this.oi = oi;
+            //numWrappers += 1;
+            //id = 'osifd0923a' + numWrappers;
+
+            //this.prod = prod;
+            //this.oi = oi;
 
             Name = prod.Name;
             Description = prod.Description;
             ProductCode = prod.ProductCode;
             Quantity = (integer)oi.Quantity;
+            OrderItemID = oi.Id;
+            ProductID = prod.Id;
         }
     }
     

@@ -1,21 +1,21 @@
 <aura:component controller="AuraCartController">
 
-    <!--<aura:attribute name="data" type="Object"/>-->
-    <aura:attribute name="data" type="List"/><!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <aura:attribute name="data" type="List"/>
     <aura:attribute name="columns" type="List"/> 
+    <aura:attribute name="selectedRow" type="Object"/>
 
-    <aura:attribute name="selectedText" type="string" default="nothing selected"/>
     <aura:attribute name="draftOrderID" default="ORDER_ID" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>
 
     <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
 
     <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+    <aura:handler event="c:UpdateCartQuantity" action="{! c.incrementSelected }"/>
 
     <lightning:card title="Items in Cart">
 
         {!v.draftOrderID}
         <br/>
-        {!v.selectedText}
+        {!v.selectedRow ? v.selectedRow.Name : 'Nothing selected'}
 
         <!-- the container element determines the height of the datatable -->
         <div style="height: 350px">
@@ -24,10 +24,12 @@
                 data="{! v.data }"
                 keyField="id"
                 maxRowSelection="1"
-                onrowselection="{! c.updateSelectedText }"/>
+                onrowselection="{! c.updateSelected }"/>
         </div>
 
         <lightning:button variant="success" label="Confirm Cart" onclick="{!c.emitCartConfirm}"/>
+
+        <!--lightning:button variant="success" label="Increment selected item in cart" onclick="{!c.incrementSelected}"/-->
 
     </lightning:card>
 

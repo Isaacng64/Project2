@@ -10,5 +10,8 @@
     },
     getPersistentSameShipping : function(component, event, helper) {
         helper.getPersistentSameShipping(component, event);
+    },
+    submitOrder : function(component, event, helper){
+        helper.submitOrder(component);
     }
 })

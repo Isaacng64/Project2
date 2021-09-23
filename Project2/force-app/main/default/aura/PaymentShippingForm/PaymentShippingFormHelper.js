@@ -9,10 +9,8 @@
                 
                 component.set("v.bSameShipping", response.getReturnValue());
 
-                //return response.getReturnValue();
-
             }else{
-                //return false;
+
             }
 
             component.set("v.bResponseReceived", true);
@@ -28,12 +26,23 @@
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
                 
-                //component.set("v.bSameShipping", response.getReturnValue());
-
-                //return response.getReturnValue();
-
             }else{
-                //return false;
+
+            }
+        });
+
+        $A.enqueueAction(a);
+    },
+    submitOrder : function(component){
+        let a = component.get("c.activateOrder");
+
+        a.setParams({"orderID" : "8015f000000g3ZeAAI", "bool" : bool});         //component.get("draftOrderID")});
+
+        a.setCallback(this, function(response){
+            if(response.getState() == "SUCCESS"){
+                
+            }else{
+
             }
         });
 

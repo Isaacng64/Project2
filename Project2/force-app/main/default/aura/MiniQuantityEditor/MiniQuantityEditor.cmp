@@ -1,6 +1,9 @@
 <aura:component>
 
+    <aura:registerEvent name="appEvent" type="c:UpdateCartQuantity"/>
+
     <aura:attribute name="SelectedQuantity" type="Integer" default="0" description="Used to display the quantity of the selected item in cart/inventory, in your cart" />
+    
     <div class="c-container">
         <lightning:layout horizontalAlign="space">
             <lightning:layoutItem>

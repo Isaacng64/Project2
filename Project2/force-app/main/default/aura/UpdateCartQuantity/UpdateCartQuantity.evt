@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="This event is to signal the updateCart functionality.">
+
+    <aura:attribute name="amount" type="Integer" default="1"/>
+    <!--aura:attribute name="amount" type="Integer" default="1"/-->
+
+</aura:event>

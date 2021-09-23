@@ -9,11 +9,12 @@
     
     <lightning:card title="Shipping and Payment">
 
-        <lightning:recordEditForm objectApiName="Contact">
-            <lightning:inputField fieldName="Email"/>
-            <lightning:inputField fieldName="MailingAddress"/>
+        <lightning:recordEditForm objectApiName="Order" recordId="8015f000000g3ZeAAI">
+            <lightning:inputField fieldName="BillingAddress"/>
+            <lightning:inputField fieldName="ShippingAddress"/>
             <lightning:inputField fieldName="Name"/>
-            <lightning:inputField fieldName="Phone"/>
+            <lightning:inputField fieldName="Status"/>
+            <lightning:button class="slds-m-top_small" variant="brand" type="submit" name="update" label="Update" />
         </lightning:recordEditForm>
 
 
@@ -34,7 +35,6 @@
                 </aura:if>
 
             </aura:if>  
-    
         </lightning:recordEditForm>
 
         <lightning:button variant="destructive" label="Back" onclick="{!c.emitCartConfirm}"/>
