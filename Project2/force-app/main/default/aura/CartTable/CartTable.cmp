@@ -5,16 +5,19 @@
     <aura:attribute name="columns" type="List"/>
 
     <aura:attribute name="selectedText" type="string" default="nothing selected"/>
+    <aura:attribute name="draftOrderID" default="ORDER_ID" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>
 
     <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
 
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
     <lightning:card title="Items in Cart">
-        <!-- the container element determines the height of the datatable
 
         {!v.draftOrderID}
-        
-        {!v.selectedText} -->
+        <br/>
+        {!v.selectedText}
 
+        <!-- the container element determines the height of the datatable -->
         <div style="height: 350px">
             <lightning:datatable
                 columns="{! v.columns }"
