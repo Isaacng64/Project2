@@ -45,7 +45,19 @@ public without sharing class AuraCartController {
         newCart.EffectiveDate = Date.today();
 
         Insert newCart;
-        return newCart.id;
+
+        return newCart.id; // works!
+    }
+
+    public class Wrapper{
+
+        public Product2 prod;
+        public OrderItem oi;
+
+        public Wrapper(Product2 prod, OrderItem oi){
+            this.prod = prod;
+            this.oi = oi;
+        }
     }
     
 }
