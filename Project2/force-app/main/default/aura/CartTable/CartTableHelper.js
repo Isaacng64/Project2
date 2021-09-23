@@ -35,6 +35,8 @@
                 
                 component.set("v.data", response.getReturnValue());
 
+                alert(response.getReturnValue()[0]["Name"]); // HOW DID THIS WORK!?!?
+
             }
         });
 
