@@ -35,8 +35,12 @@
                 
                 component.set("v.data", response.getReturnValue());
 
-                alert(response.getReturnValue()[0]["Name"]); // HOW DID THIS WORK!?!?
+                //alert(response.getReturnValue()[0]["Name"]); // HOW DID THIS WORK!?!?
 
+
+                //alert(Object.keys(response.getReturnValue()[0])); //["prod"]["Name"]
+
+                //alert(response.getReturnValue()[0]["prod"]["Name"]); // WORKS NOW YES!!!!!!!!!!! Noww that I've @AuraEnabled in my wrapper class properties on the apex controller!
             }
         });
 

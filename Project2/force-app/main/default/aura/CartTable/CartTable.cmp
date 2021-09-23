@@ -1,8 +1,8 @@
 <aura:component controller="AuraCartController">
 
     <!--<aura:attribute name="data" type="Object"/>-->
-    <aura:attribute name="data" type="Product2[]"/>
-    <aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="List"/><!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+    <aura:attribute name="columns" type="List"/> 
 
     <aura:attribute name="selectedText" type="string" default="nothing selected"/>
     <aura:attribute name="draftOrderID" default="ORDER_ID" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>

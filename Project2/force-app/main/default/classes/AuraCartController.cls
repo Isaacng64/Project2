@@ -14,23 +14,28 @@ public without sharing class AuraCartController {
 
     
     @AuraEnabled
-    public static List<Product2> getCartProducts(String orderID){
-        Order a = [SELECT id, (SELECT id, Product2Id FROM OrderItems) FROM Order WHERE id = :orderID];
+    public static List<Wrapper> getCartProducts(String orderID){
+        Order a = [SELECT id, (SELECT id, Product2Id, Quantity FROM OrderItems) FROM Order WHERE id = :orderID];
 
         //List<String> productNames = new List<String>();
 
-        List<Product2> cartProducts = new List<Product2>();
+        //List<Product2> cartProducts = new List<Product2>();
+
+        List<Wrapper> wrappers = new List<Wrapper>();
         
         for(integer i = 0; i < a.OrderItems.size(); i++){
             String theId = (String)a.OrderItems[i].get('Product2Id');
             Product2 prod = [SELECT ID, Name, ProductCode, Description FROM Product2 WHERE ID = :theId];
             //productNames.add(prod.Name);
-            cartProducts.add(prod);
+            //cartProducts.add(prod);
+            wrappers.add(new Wrapper(prod, a.OrderItems[i]));
         }
+
+        return wrappers;
         
         //System.debug(productNames);
 
-        return cartProducts; // may want to return other info than strictly the product 2 sobjects if concerned about quantity, which is to do more with the orderitem actually
+        //return cartProducts; // may want to return other info than strictly the product 2 sobjects if concerned about quantity, which is to do more with the orderitem actually
         // so perhaps, all you are actually concerned with in queryring the product2 for is the name after all, in which the commented out code is what you need
         
     }
@@ -68,12 +73,28 @@ public without sharing class AuraCartController {
 
     public class Wrapper{
 
-        public Product2 prod;
-        public OrderItem oi;
+        //@AuraEnabled
+        //public Product2 prod; // what is difference from this and using/not using {set;get;} ????
+        //@AuraEnabled
+        //public OrderItem oi;
+
+        @AuraEnabled
+        public String Name;
+        @AuraEnabled
+        public String Description;
+        @AuraEnabled
+        public String ProductCode;
+        @AuraEnabled
+        public Integer Quantity;
 
         public Wrapper(Product2 prod, OrderItem oi){
             this.prod = prod;
             this.oi = oi;
+
+            Name = prod.Name;
+            Description = prod.Description;
+            ProductCode = prod.ProductCode;
+            Quantity = (integer)oi.Quantity;
         }
     }
     
