@@ -1,4 +1,11 @@
-<aura:component>
+<aura:component controller="AuraCartController">
+
+    <aura:attribute name="bResponseReceived" default="false" type="Boolean"/>
+    <aura:attribute name="bSameShipping" default="false" type="Boolean"/>
+
+    <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
+
+    <aura:handler name="init" value="{! this }" action="{!c.getPersistentSameShipping}"/>
     
     <lightning:card title="Shipping and Payment">
 
@@ -15,25 +22,25 @@
             <lightning:inputField fieldName="ExpiryMonth"/>
             <lightning:inputField fieldName="ExpiryYear"/>
 
-            <!-- Do not store any mutable value IN the lightning:input, only in declared attributes at the top! Save very much headache. -->
-            <aura:if isTrue="{!v.bSameShipping}">
-                <lightning:input label="Card Address same as Shipping" type="toggle" checked="true" onchange="{!c.sameShipping}" messageToggleActive="Yes" messageToggleInactive="No"/>
-                <aura:set attribute="else">
-                    <lightning:input label="Card Address same as Shipping" type="toggle" checked="false" onchange="{!c.sameShipping}" messageToggleActive="Yes" messageToggleInactive="No"/> 
-                </aura:set>
-            </aura:if>
+            <aura:if isTrue="{!v.bResponseReceived}">
+                <!-- Do not store any mutable value IN the lightning:input, only in declared attributes at the top! Save very much headache. -->
+                <lightning:input label="Billing Address same as Shipping" type="toggle" checked="{#v.bSameShipping}" onchange="{!c.sameShipping}" messageToggleActive="Yes" messageToggleInactive="No"/> 
             
-            <aura:if isTrue="{!v.bSameShipping}">
-                Roger dodger
-                <aura:set attribute="else">
-                    <lightning:inputField fieldName="PaymentMethodAddress"/>
-                </aura:set>
-            </aura:if>
-            
+                <aura:if isTrue="{!v.bSameShipping}">
+                    Roger dodger
+                    <aura:set attribute="else">
+                        <lightning:inputField fieldName="PaymentMethodAddress"/>
+                    </aura:set>
+                </aura:if>
+
+            </aura:if>  
+    
         </lightning:recordEditForm>
 
-        <lightning:button variant="destructive" label="Back" onclick="{!c.toggleCart}"/>
+        <lightning:button variant="destructive" label="Back" onclick="{!c.emitCartConfirm}"/>
+
         <lightning:button variant="success" label="Submit Order" onclick="{!c.submitOrder}"/>
+        
     </lightning:card>
 
 </aura:component>	

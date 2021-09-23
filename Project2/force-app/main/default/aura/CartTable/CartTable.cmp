@@ -1,4 +1,10 @@
-<aura:component>
+<aura:component controller="AuraCartController">
+
+    <!--<aura:attribute name="data" type="Object"/>-->
+    <aura:attribute name="data" type="Product2[]"/>
+    <aura:attribute name="columns" type="List"/>
+
+    <aura:attribute name="selectedText" type="string" default="nothing selected"/>
 
     <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
 
@@ -21,5 +27,5 @@
         <lightning:button variant="success" label="Confirm Cart" onclick="{!c.emitCartConfirm}"/>
 
     </lightning:card>
-    
+
 </aura:component>	

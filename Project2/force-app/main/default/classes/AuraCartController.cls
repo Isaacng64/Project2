@@ -36,7 +36,7 @@ public without sharing class AuraCartController {
     }
 
     @AuraEnabled
-    public static string initCart(){
+    public static String initCart(){
         Order newCart = new Order();
 
         newCart.Status = 'Draft';
@@ -48,6 +48,23 @@ public without sharing class AuraCartController {
 
         return newCart.id; // works!
     }
+
+    @AuraEnabled
+    public static Boolean getSameAddress(String orderID){
+        Order a = [SELECT id, bSameAddress__c FROM Order WHERE id = :orderID];
+
+        return a.bSameAddress__c;
+    }
+    
+    @AuraEnabled
+    public static void setSameAddress(String orderID, Boolean bool){
+        Order a = [SELECT id, bSameAddress__c FROM Order WHERE id = :orderID];
+
+        a.bSameAddress__c = bool;
+
+        Update a;
+    }
+
 
     public class Wrapper{
 
