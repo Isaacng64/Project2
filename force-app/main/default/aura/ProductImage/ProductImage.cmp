@@ -1,0 +1,14 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global" >
+    <lightning:layout class="slds-page-header slds-page-header_object-home">
+        <div class="page-section page-header">
+            <h1 class="slds-text-heading_label slds-text-align_left">Unit</h1>
+            <h2 class="slds-text-heading_medium slds-text-align_left">Luxury Black</h2>
+            <br/>
+            <div >
+                <img src="{!$Resource.Img_Bold_Black_Chrome}" class="center_img"/>
+            </div>
+            <br/>
+            <h2 class="slds-text-heading_medium slds-text-align_center">Price: 10.000</h2>
+        </div>
+    </lightning:layout>
+</aura:component>

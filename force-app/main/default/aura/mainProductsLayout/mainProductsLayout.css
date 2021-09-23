@@ -1,0 +1,18 @@
+.THIS.c-container {
+    border: 2px solid #FFF7D9;
+    background-color: #E8ECFF;
+    margin: 5px 0 10px 0;
+}
+.THIS .x-large {
+    height: 450px;
+    overflow-y: scroll;
+}
+.THIS .custom-box {
+    text-align: center;
+    background-color: #FFF7D9;
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+}
+.THIS .scroll {
+    overflow-y: auto;
+}
