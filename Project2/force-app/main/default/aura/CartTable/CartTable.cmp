@@ -1,0 +1,25 @@
+<aura:component>
+
+    <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
+
+    <lightning:card title="Items in Cart">
+        <!-- the container element determines the height of the datatable
+
+        {!v.draftOrderID}
+        
+        {!v.selectedText} -->
+
+        <div style="height: 350px">
+            <lightning:datatable
+                columns="{! v.columns }"
+                data="{! v.data }"
+                keyField="id"
+                maxRowSelection="1"
+                onrowselection="{! c.updateSelectedText }"/>
+        </div>
+
+        <lightning:button variant="success" label="Confirm Cart" onclick="{!c.emitCartConfirm}"/>
+
+    </lightning:card>
+    
+</aura:component>	

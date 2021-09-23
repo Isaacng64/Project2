@@ -1,0 +1,1 @@
+<aura:event type="COMPONENT" description="Event for when the cart confirm button has been clicked."/>
