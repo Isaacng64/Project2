@@ -11,7 +11,11 @@
     getPersistentSameShipping : function(component, event, helper) {
         helper.getPersistentSameShipping(component, event);
     },
-    submitOrder : function(component, event, helper){
-        helper.submitOrder(component);
+    submitCartError : function(component, event, helper){
+        alert(event.getParam("error").message);
+    },
+    submitCartSuccess : function(component, event, helper){
+        alert("Order submit!");
+        component.set("v.bCheckedOut", true);
     }
 })

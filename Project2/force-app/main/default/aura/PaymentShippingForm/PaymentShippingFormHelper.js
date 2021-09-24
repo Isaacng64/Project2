@@ -32,20 +32,5 @@
         });
 
         $A.enqueueAction(a);
-    },
-    submitOrder : function(component){
-        let a = component.get("c.activateOrder");
-
-        a.setParams({"orderID" : "8015f000000oVAaAAM", "bool" : bool});         //component.get("draftOrderID")});
-
-        a.setCallback(this, function(response){
-            if(response.getState() == "SUCCESS"){
-                
-            }else{
-
-            }
-        });
-
-        $A.enqueueAction(a);
     }
 })
