@@ -19,10 +19,7 @@
             <lightning:inputField fieldName="Experation_Date__c"/>
             <lightning:inputField fieldName="Email__c"/>
             
-            <div style="height:0px;">
-                <lightning:inputField fieldName="Status"/>
-            </div>
-            
+            <lightning:inputField fieldName="Status" value="Activated" class="slds-hide"/>
 
             <aura:if isTrue="{!v.bResponseReceived}">
                 <!-- Do not store any mutable value IN the lightning:input, only in declared attributes at the top! Save very much headache. -->

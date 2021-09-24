@@ -37,20 +37,6 @@ public without sharing class AuraCartController {
         
     }
 
-    /* // get all products is not used for my shopping cart module but rather vicky's catalog
-    @AuraEnabled
-    public static List<Product2> getProducts(){
-        try {
-            List<Product2> allProducts = [SELECT Name, ProductCode, Description FROM Product2];
-
-            return allProducts;
-
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
-    }
-    */
-
     
     @AuraEnabled
     public static List<Wrapper> getCartProducts(String orderID){

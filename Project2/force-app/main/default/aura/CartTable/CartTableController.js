@@ -1,17 +1,17 @@
 ({
-    emitCartConfirm : function(component, event, helper) {
-        let evt = component.getEvent("ToggleCart");
-        evt.fire();
-    },
-    submitOrder : function(component, event, helper) {
-        //alert("Order submit!");
+    CartConfirm : function(component, event, helper) {
+        let data = component.get("v.data");
+        if (data.length > 0){
+            let evt = component.getEvent("ToggleCart");
+            evt.fire();
+        }else{
+            alert("Cart must have at least 1 item in it to move to checkout")
+        }
+        
     },
     init: function (component, event, helper) {
 
         helper.setTableColumnsAndRerender(component);
-
-        // actually load real data not fake data
-        //helper.getAllProducts(component, event);
 
         // get just products in your cart
         helper.getCartProducts(component, event);

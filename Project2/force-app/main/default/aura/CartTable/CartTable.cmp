@@ -27,9 +27,7 @@
                 onrowselection="{! c.updateSelected }"/>
         </div>
 
-        <lightning:button variant="success" label="Confirm Cart" onclick="{!c.emitCartConfirm}"/>
-
-        <!--lightning:button variant="success" label="Increment selected item in cart" onclick="{!c.incrementSelected}"/-->
+        <lightning:button variant="success" label="Confirm Cart" onclick="{!c.CartConfirm}"/>
 
     </lightning:card>
 
