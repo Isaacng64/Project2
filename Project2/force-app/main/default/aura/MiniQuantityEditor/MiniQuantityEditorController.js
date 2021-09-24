@@ -1,16 +1,26 @@
 ({
     addValue : function(component, event, helper) {
-
+        let e = $A.get("e.c:UpdateCartQuantity");
         let amount = parseInt(event.getSource().get("v.value"));
 
-        component.set("v.SelectedQuantity", component.get("v.SelectedQuantity") + amount);
+        e.setParams({"added" : amount, "direction" : "UP"});
 
-        if(component.get("v.SelectedQuantity") < 0){
-            component.set("v.SelectedQuantity", 0);
+        e.fire();
+    },
+
+    getValue : function(component, event, helper){
+        if (event.getParam("direction") == "DOWN"){
+            let value = event.getParam("current");
+            component.set("v.SelectedQuantity", value);
         }
-
+        
+    },
+    removeItem : function(component, event, helper){
+        
         let e = $A.get("e.c:UpdateCartQuantity");
-        e.setParams({"amount" : amount});
+
+        e.setParams({"remove" : true, "direction" : "UP"});
+
         e.fire();
     }
 })

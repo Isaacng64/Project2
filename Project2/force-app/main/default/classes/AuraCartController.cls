@@ -1,18 +1,16 @@
 public without sharing class AuraCartController {
 
-    /*
-    @AuraEnabled // get an order item id if one exists in your cart for the given product type, and if not, return empty string
-    public static string getExistingOrderItem(String orderID, String productID){
+    @AuraEnabled
+    public static void removeItem(String orderID, String productOrOrderItemID){
+        OrderItem item = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
 
-        OrderItem item = [SELECT ID, product2id, order FROM OrderItem WHERE order = :orderID AND product2id = :productID];
-
-        if (! item.equals(null)){
-            return item.id;
-        }else{
-            return '';
+        try{
+            Delete item;
+        }
+        catch(Exception e){
+            throw new AuraHandledException(e.getMessage());
         }
     }
-    */
 
     @AuraEnabled
     public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
@@ -86,8 +84,8 @@ public without sharing class AuraCartController {
         Order newCart = new Order();
 
         newCart.Status = 'Draft';
-        newCart.AccountId = '0015f000003NEWxAAO'; // genericWebAcount
-        newCart.MiningSite__c = 'a015f000002sb3HAAQ'; // space comet 2
+        newCart.AccountId = '0015f000005eMt0AAE'; // genericWebAcount
+        //newCart.MiningSite__c = 'a015f000002sb3HAAQ'; // space comet 2
         newCart.EffectiveDate = Date.today();
 
         Insert newCart;

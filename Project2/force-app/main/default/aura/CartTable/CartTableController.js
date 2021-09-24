@@ -7,14 +7,7 @@
         //alert("Order submit!");
     },
     init: function (component, event, helper) {
-        /*
-        component.set('v.columns', [
-            {label: 'Name', fieldName: 'Name', type: 'text'},
-            {label: 'Unit Number', fieldName: 'ProductCode', type: 'text'},
-            {label: 'Description', fieldName: 'Description', type: 'text'},
-            {label: 'Quantity', fieldName: 'Quantity', type: 'Integer'}
-        ]);
-        */
+
         helper.setTableColumnsAndRerender(component);
 
         // actually load real data not fake data
@@ -35,13 +28,31 @@
         if (selected){
             component.set("v.selectedRow", selected);
         }
+
+        helper.updateMiniQuantityView(selected);
         
     },
-    incrementSelected : function(component, event, helper){
+    updateSelectedAmount : function(component, event, helper){
+        let dir = event.getParam("direction");
         let selected = component.get("v.selectedRow");
-
-        helper.incrementSelected(component, event, selected);
+        if(selected){
+            if (dir == "UP"){
+                if (event.getParam("remove")){
+    
+                    helper.removeRow(component, selected);
+    
+                    helper.getCartProducts(component);
+    
+                }else{
+                    let added = event.getParam("added");
+                
+                    helper.updateSelectedAmount(component, event, selected, added);
+                
+                    helper.setTableColumnsAndRerender(component);
         
-        helper.setTableColumnsAndRerender(component);
+                    helper.updateMiniQuantityView(selected);
+                }
+            }
+        }
     }
 })

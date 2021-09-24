@@ -1,4 +1,5 @@
 ({
+    /*
     getAllProducts: function (component, event) {
         let a = component.get("c.getProducts");
 
@@ -11,7 +12,7 @@
         });
 
         $A.enqueueAction(a);
-    },
+    },*/
     initTheCart : function (component, event){
         let a = component.get("c.initCart");
 
@@ -25,34 +26,29 @@
 
         $A.enqueueAction(a);
     },
-    getCartProducts : function(component, event){
+    getCartProducts : function(component){
         let a = component.get("c.getCartProducts");
 
-        a.setParams({"orderID" : "8015f000000g3ZeAAI"});         //component.get("draftOrderID")});
+        a.setParams({"orderID" : "8015f000000oVAaAAM"});         //component.get("draftOrderID")});
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
                 
                 component.set("v.data", response.getReturnValue());
 
-                //alert(response.getReturnValue()[0]["Name"]); // HOW DID THIS WORK!?!?
-
-                //alert(Object.keys(response.getReturnValue()[0])); //["prod"]["Name"]
-
-                //alert(response.getReturnValue()[0]["prod"]["Name"]); // WORKS NOW YES!!!!!!!!!!! Noww that I've @AuraEnabled in my wrapper class properties on the apex controller!
             }
         });
 
         $A.enqueueAction(a);
     },
-    incrementSelected : function(component, event, selectedRow){
+    updateSelectedAmount : function(component, event, selectedRow, added){
 
-        selectedRow.Quantity += 1; // passed by reference
+        selectedRow.Quantity += added; // passed by reference
 
         let a = component.get("c.updateCart");
 
         //component.get("draftOrderID")});
-        a.setParams({"orderID" : "8015f000000g3ZeAAI", "productOrOrderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
+        a.setParams({"orderID" : "8015f000000oVAaAAM", "productOrOrderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
         
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
@@ -69,5 +65,37 @@
             {label: 'Description', fieldName: 'Description', type: 'text'},
             {label: 'Quantity', fieldName: 'Quantity', type: 'Integer'}
         ]);
+    },
+    updateMiniQuantityView : function(selectedRow){
+
+        let amount = 0;
+        if(selectedRow){
+            amount = selectedRow.Quantity;
+        }
+
+        let e = $A.get("e.c:UpdateCartQuantity");
+        if(amount){
+
+            e.setParams({"current" : amount, "direction" : "DOWN"});
+    
+        }else{
+
+            e.setParams({"current" : 0, "direction" : "DOWN"});
+
+        }
+
+        e.fire();
+    },
+    removeRow : function(component, row){
+        let a = component.get("c.removeItem");
+        a.setParams({"orderID" : "8015f000000oVAaAAM", "productOrOrderItemID" : row.OrderItemID})
+
+        a.setCallback(this, function(response){
+            if(response.getState() == "SUCCESS"){
+
+            }
+        });
+
+        $A.enqueueAction(a);
     }
 })

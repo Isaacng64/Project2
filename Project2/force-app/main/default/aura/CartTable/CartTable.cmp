@@ -9,7 +9,7 @@
     <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
 
     <aura:handler name="init" value="{! this }" action="{! c.init }"/>
-    <aura:handler event="c:UpdateCartQuantity" action="{! c.incrementSelected }"/>
+    <aura:handler event="c:UpdateCartQuantity" action="{! c.updateSelectedAmount }"/>
 
     <lightning:card title="Items in Cart">
 
