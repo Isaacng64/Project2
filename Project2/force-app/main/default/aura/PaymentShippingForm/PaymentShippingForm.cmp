@@ -3,7 +3,8 @@
 
     <aura:attribute name="bResponseReceived" default="false" type="Boolean"/>
     <aura:attribute name="bSameShipping" default="false" type="Boolean"/>
-    <aura:attribute name="sDraftOrderID" type="String"/>
+
+    <aura:attribute name="draftOrderID" type="String"/>
 
     <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
 
@@ -12,7 +13,7 @@
     <lightning:card title="Shipping and Payment">
         <aura:if isTrue="{!v.bCheckedOut == false}">
             <!-- BEWARE HARDCODED ORDER ID EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!-->
-            <lightning:recordEditForm objectApiName="Order" recordId="8015f000000oVAaAAM" onerror="{!c.submitCartError}" onsuccess="{!c.submitCartSuccess}"> 
+            <lightning:recordEditForm objectApiName="Order" recordId="{!v.draftOrderID}" onerror="{!c.submitCartError}" onsuccess="{!c.submitCartSuccess}"> 
                 <lightning:inputField fieldName="First_Name__c"/>
                 <lightning:inputField fieldName="Last_Name__c"/>
                 <lightning:inputField fieldName="BillingAddress"/>

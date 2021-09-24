@@ -2,17 +2,21 @@
 
     <aura:attribute name="bCartConfirmed" default="false" type="Boolean" description="If the cart is confirmed, show the payment and shipping details; otherwise, show the cart to make changes."/>
     
+    <aura:attribute name="draftOrderID" default="ORDER_ID" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>
+
     <aura:handler name="ToggleCart" event="c:ConfirmCart" action="{!c.toggleCart}"/>
 
     <div>
 
+        <!--{!v.draftOrderID}-->
+
         <aura:if isTrue="{!v.bCartConfirmed == false}">
 
-            <c:CartTable/>
+            <c:CartTable draftOrderID="{!v.draftOrderID}"/>
 
             <aura:set attribute="else">
 
-                <c:PaymentShippingForm/>
+                <c:PaymentShippingForm draftOrderID="{!v.draftOrderID}"/>
 
             </aura:set>
 

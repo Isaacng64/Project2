@@ -70,11 +70,15 @@ public without sharing class AuraCartController {
         Order newCart = new Order();
 
         newCart.Status = 'Draft';
-        newCart.AccountId = '0015f000005eMt0AAE'; // genericWebAcount
-        //newCart.MiningSite__c = 'a015f000002sb3HAAQ'; // space comet 2
+        newCart.AccountId = '0015f000005eMt0AAE'; // GenericWebPurchases
+
         newCart.EffectiveDate = Date.today();
 
-        Insert newCart;
+        try{
+            Insert newCart;
+        }catch(Exception e){
+            throw new AuraHandledException(e.getMessage());
+        }
 
         return newCart.id; // works!
     }

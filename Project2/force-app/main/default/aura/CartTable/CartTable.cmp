@@ -17,6 +17,8 @@
         <br/>
         {!v.selectedRow ? v.selectedRow.Name : 'Nothing selected'}
 
+        <lightning:button variant="success" label="(refresh cart items)" onclick="{!c.getCartItems}"/>
+
         <!-- the container element determines the height of the datatable -->
         <div style="height: 350px">
             <lightning:datatable

@@ -2,7 +2,7 @@
     getPersistentSameShipping : function(component, event) {
         let a = component.get("c.getSameAddress");
 
-        a.setParams({"orderID" : "8015f000000oVAaAAM"});         //component.get("draftOrderID")});
+        a.setParams({"orderID" : component.get("v.draftOrderID")});         //component.get("draftOrderID")});
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
@@ -21,7 +21,7 @@
     setSameShipping : function(component, event, helper, bool) {
         let a = component.get("c.setSameAddress");
 
-        a.setParams({"orderID" : "8015f000000oVAaAAM", "bool" : bool});         //component.get("draftOrderID")});
+        a.setParams({"orderID" : component.get("v.draftOrderID"), "bool" : bool});         //component.get("draftOrderID")});
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){

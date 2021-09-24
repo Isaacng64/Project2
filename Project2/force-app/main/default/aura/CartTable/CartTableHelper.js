@@ -1,18 +1,4 @@
 ({
-    /*
-    getAllProducts: function (component, event) {
-        let a = component.get("c.getProducts");
-
-        a.setCallback(this, function(response){
-            if(response.getState() == "SUCCESS"){
-                
-                component.set("v.data", response.getReturnValue());
-
-            }
-        });
-
-        $A.enqueueAction(a);
-    },*/
     initTheCart : function (component, event){
         let a = component.get("c.initCart");
 
@@ -29,7 +15,7 @@
     getCartProducts : function(component){
         let a = component.get("c.getCartProducts");
 
-        a.setParams({"orderID" : "8015f000000oVAaAAM"});         //component.get("draftOrderID")});
+        a.setParams({"orderID" : component.get("v.draftOrderID")});        //"8015f000000oVAaAAM"
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
@@ -48,7 +34,7 @@
         let a = component.get("c.updateCart");
 
         //component.get("draftOrderID")});
-        a.setParams({"orderID" : "8015f000000oVAaAAM", "productOrOrderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
+        a.setParams({"orderID" : component.get("v.draftOrderID"), "productOrOrderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
         
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
@@ -88,7 +74,7 @@
     },
     removeRow : function(component, row){
         let a = component.get("c.removeItem");
-        a.setParams({"orderID" : "8015f000000oVAaAAM", "productOrOrderItemID" : row.OrderItemID})
+        a.setParams({"orderID" : component.get("v.draftOrderID"), "productOrOrderItemID" : row.OrderItemID})
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
