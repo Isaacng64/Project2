@@ -32,5 +32,14 @@
         });
 
         $A.enqueueAction(a);
+    },
+    validateInputs : function(event){
+        let fields = event.getParam("fields");
+        for (let field in fields){
+            if (field == "" || field == {} || field == []){
+                event.preventDefault();
+                alert("Please fill out all fields");
+            }
+        }
     }
 })

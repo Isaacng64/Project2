@@ -13,7 +13,7 @@
     <lightning:card title="Shipping and Payment">
         <aura:if isTrue="{!v.bCheckedOut == false}">
             <!-- BEWARE HARDCODED ORDER ID EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!-->
-            <lightning:recordEditForm objectApiName="Order" recordId="{!v.draftOrderID}" onerror="{!c.submitCartError}" onsuccess="{!c.submitCartSuccess}"> 
+            <lightning:recordEditForm objectApiName="Order" recordId="{!v.draftOrderID}" onsubmit="{!c.submitValidate}" onerror="{!c.submitCartError}" onsuccess="{!c.submitCartSuccess}"> 
                 <lightning:inputField fieldName="First_Name__c"/>
                 <lightning:inputField fieldName="Last_Name__c"/>
                 <lightning:inputField fieldName="BillingAddress"/>

@@ -1,0 +1,31 @@
+<aura:component description="This is basically the navbar">
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="logo">
+                <lightning:button iconName="utility:download" />
+            </li>
+
+            <li class="nav-item">
+                <lightning:button iconName="utility:download" />
+            </li>
+
+            <li class="nav-item">
+                <lightning:button iconName="utility:download" />
+            </li>
+
+            <li class="nav-item">
+                <lightning:button iconName="utility:download" />
+            </li>
+
+            <li class="nav-item">
+                <lightning:button iconName="utility:download" />
+            </li>
+
+            <li class="nav-item">
+                <lightning:button iconName="utility:download" />
+            </li>
+        </ul>
+    </nav>
+
+</aura:component>	

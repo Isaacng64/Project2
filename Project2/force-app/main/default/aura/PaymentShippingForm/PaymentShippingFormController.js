@@ -17,5 +17,8 @@
     submitCartSuccess : function(component, event, helper){
         alert("Order submit!");
         component.set("v.bCheckedOut", true);
+    },
+    submitValidate : function(component, event, helper){
+        helper.validateInputs(event);
     }
 })
