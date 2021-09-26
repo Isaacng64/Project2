@@ -24,14 +24,6 @@
   
   
 .THIS .logo {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: blue;
-    background: blueviolet;
-    font-size: 1.5rem;
-    letter-spacing: 0.3ch;
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
 }

@@ -10,17 +10,41 @@
 
         <!--{!v.draftOrderID}-->
 
-        <aura:if isTrue="{!v.bCartConfirmed == false}">
+        <lightning:layout horizontalAlign="center" verticalAlign="center">
 
-            <c:CartTable draftOrderID="{!v.draftOrderID}"/>
+            <lightning:layoutItem>
+                <aura:if isTrue="{!v.bCartConfirmed == false}">
 
-            <aura:set attribute="else">
+                    <c:CartTable draftOrderID="{!v.draftOrderID}"/>
 
-                <c:PaymentShippingForm draftOrderID="{!v.draftOrderID}"/>
+                    <aura:set attribute="else">
 
-            </aura:set>
+                        <c:PaymentShippingForm draftOrderID="{!v.draftOrderID}"/>
 
-        </aura:if>
+                    </aura:set>
+
+                </aura:if>
+            </lightning:layoutItem>
+
+
+            <lightning:layoutItem padding="around-small" flexibility="auto">
+                <ul>
+                    <li>
+                        <h2 class="slds-text-heading_large">PRODUCT PICTURE</h2>
+                    </li>
+                    <li>
+                        <p>Why does my text keep getting squished over here</p>
+                    </li>
+                    <li>
+                        <c:MiniQuantityEditor/>
+                    </li>
+                </ul>
+            </lightning:layoutItem>
+
+
+        </lightning:layout>
+
+        
         
     </div>
 

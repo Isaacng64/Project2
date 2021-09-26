@@ -1,5 +1,9 @@
 <aura:component>
 
+    <aura:attribute name="SelectedPage" type="String" default="promo"/>
+
+    <aura:handler name="Navigation" event="c:Navigation" action="{!c.Navigate}"/>
+
     <lightning:layout horizontalAlign="center" verticalAlign="center">
         <lightning:layoutItem padding="around-large">
             <h1 class="slds-text-heading_large">Sample App Header Banner Thing</h1>
@@ -8,26 +12,31 @@
 
     <lightning:layout>
 
-        <lightning:layoutItem padding="around-small" flexibility="auto">
+        <lightning:layoutItem padding="around-small" flexibility="shrink">
             <c:Navbar/>
         </lightning:layoutItem>
 
         <lightning:layoutItem padding="around-small" flexibility="auto">
-            <c:Cart/>
-        </lightning:layoutItem>
+            <aura:if isTrue="{!v.SelectedPage == 'promo'}">
+                <c:PromoPage/>
+            </aura:if>
 
-        <lightning:layoutItem padding="around-small" flexibility="auto">
-            <ul>
-                <li>
-                    <h2 class="slds-text-heading_large">PRODUCT PICTURE</h2>
-                </li>
-                <li>
-                    <p>Why does my text keep getting squished over here</p>
-                </li>
-                <li>
-                    <c:MiniQuantityEditor/>
-                </li>
-            </ul>
+            <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
+                <c:Cart/>
+            </aura:if>
+
+            <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">
+                <c:UpcomingProducts/>
+            </aura:if>
+
+            <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
+                TRACKER
+            </aura:if>
+
+            <aura:if isTrue="{!v.SelectedPage == 'issues'}">
+                ISSUES
+            </aura:if>
+            
         </lightning:layoutItem>
 
     </lightning:layout>
