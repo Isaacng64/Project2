@@ -2,7 +2,7 @@
 
     <aura:registerEvent name="Navigation" type="c:Navigation"/>
 
-    <div>
+    <div class="navbar">
         <img src="https://media.discordapp.net/attachments/874293863026671668/888514296009621604/logo.jpg" alt="Company Logo" class="logo" onclick="{!c.EmitNavigatePromo}"/>
 
         <lightning:verticalNavigation onselect="{!c.EmitNavigate}">
