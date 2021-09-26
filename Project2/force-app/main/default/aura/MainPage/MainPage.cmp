@@ -1,31 +1,41 @@
-<aura:component description="This is basically the navbar">
+<aura:component>
 
-    <nav class="navbar">
-        <ul class="navbar-nav">
-            <li class="logo">
-                <lightning:button iconName="utility:download" />
-            </li>
+    <lightning:layout horizontalAlign="center" verticalAlign="center">
+        <lightning:layoutItem padding="around-large">
+            <h1 class="slds-text-heading_large">Sample App Header Banner Thing</h1>
+        </lightning:layoutItem>
+    </lightning:layout>
 
-            <li class="nav-item">
-                <lightning:button iconName="utility:download" />
-            </li>
+    <lightning:layout>
 
-            <li class="nav-item">
-                <lightning:button iconName="utility:download" />
-            </li>
+        <lightning:layoutItem padding="around-small" flexibility="auto">
+            <c:Navbar/>
+        </lightning:layoutItem>
 
-            <li class="nav-item">
-                <lightning:button iconName="utility:download" />
-            </li>
+        <lightning:layoutItem padding="around-small" flexibility="auto">
+            <c:Cart/>
+        </lightning:layoutItem>
 
-            <li class="nav-item">
-                <lightning:button iconName="utility:download" />
-            </li>
+        <lightning:layoutItem padding="around-small" flexibility="auto">
+            <ul>
+                <li>
+                    <h2 class="slds-text-heading_large">PRODUCT PICTURE</h2>
+                </li>
+                <li>
+                    <p>Why does my text keep getting squished over here</p>
+                </li>
+                <li>
+                    <c:MiniQuantityEditor/>
+                </li>
+            </ul>
+        </lightning:layoutItem>
 
-            <li class="nav-item">
-                <lightning:button iconName="utility:download" />
-            </li>
-        </ul>
-    </nav>
+    </lightning:layout>
+
+    <lightning:layout horizontalAlign="center" verticalAlign="center">
+        <lightning:layoutItem>
+            <h1 class="slds-text-heading_large">other stuff down here like the contact form</h1>
+        </lightning:layoutItem>
+    </lightning:layout>
 
 </aura:component>	

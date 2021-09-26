@@ -1,0 +1,14 @@
+<aura:component>
+    <img src="https://media.discordapp.net/attachments/874293863026671668/888514296009621604/logo.jpg" alt="Company Logo"/>
+    <lightning:verticalNavigation shaded="true">
+        
+        <lightning:verticalNavigationSection label="Navigation">
+            <lightning:verticalNavigationItem label="About Us" name="about" />
+            <lightning:verticalNavigationItem label="Catalog" name="catalog" />
+            <lightning:verticalNavigationItem label="Upcoming Products" name="upcoming" />
+            <lightning:verticalNavigationItem label="Order Tracker" name="tracker" />
+            <lightning:verticalNavigationItem label="Issues" name="issues" />
+        </lightning:verticalNavigationSection>
+    </lightning:verticalNavigation>
+
+</aura:component>	
