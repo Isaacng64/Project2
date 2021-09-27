@@ -1,0 +1,53 @@
+<aura:component controller="AuraCartController">
+    <aura:attribute name="bCheckedOut" default="false" type="Boolean"/>
+
+    <aura:attribute name="bResponseReceived" default="false" type="Boolean"/>
+    <aura:attribute name="bSameShipping" default="false" type="Boolean"/>
+
+    <aura:attribute name="draftOrderID" type="String"/>
+
+    <aura:registerEvent name="ToggleCart" type="c:ConfirmCart"/>
+
+    <aura:handler name="init" value="{! this }" action="{!c.getPersistentSameShipping}"/>
+    
+    <lightning:card title="Shipping and Payment">
+        <aura:if isTrue="{!v.bCheckedOut == false}">
+            <!-- BEWARE HARDCODED ORDER ID EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE!!!!!!!!!!!!!!!!!-->
+            <lightning:recordEditForm objectApiName="Order" recordId="{!v.draftOrderID}" onsubmit="{!c.submitValidate}" onerror="{!c.submitCartError}" onsuccess="{!c.submitCartSuccess}"> 
+                <lightning:inputField fieldName="First_Name__c"/>
+                <lightning:inputField fieldName="Last_Name__c"/>
+                <lightning:inputField fieldName="BillingAddress"/>
+                <lightning:inputField fieldName="Payment_Method__c"/>
+                <lightning:inputField fieldName="Card_number__c"/>
+                <lightning:inputField fieldName="Security_Number__c"/>
+                <lightning:inputField fieldName="Experation_Date__c"/>
+                <lightning:inputField fieldName="Email__c"/>
+                
+                <lightning:inputField fieldName="Status" value="Activated" class="slds-hide"/>
+
+                <aura:if isTrue="{!v.bResponseReceived}">
+                    <!-- Do not store any mutable value IN the lightning:input, only in declared attributes at the top! Save very much headache. -->
+                    <lightning:input label="Shipping Address Same as Billing" type="toggle" checked="{#v.bSameShipping}" onchange="{!c.sameShipping}" messageToggleActive="Yes" messageToggleInactive="No"/> 
+                
+                    <aura:if isTrue="{!v.bSameShipping}">
+                        <aura:set attribute="else">
+                            
+                            <lightning:inputField fieldName="ShippingAddress"/>
+                        </aura:set>
+                    </aura:if>
+
+                </aura:if> 
+
+
+                <lightning:button variant="destructive" label="Back" onclick="{!c.emitCartConfirm}"/>
+                <lightning:button variant="success" type="submit" name="update" label="Submit Order" /><!--class="slds-m-top_small" -->
+            </lightning:recordEditForm>
+
+            <aura:set attribute="else">
+                All checked out.
+            </aura:set>
+
+        </aura:if>
+    </lightning:card>
+        
+</aura:component>

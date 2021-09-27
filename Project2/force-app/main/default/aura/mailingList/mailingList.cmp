@@ -1,0 +1,44 @@
+<aura:component>
+    <aura:attribute name="myNewLead" type="Lead"/>
+    <aura:attribute name="fieldsLead"
+                    type="String[]"
+                    default="['FirstName','LastName', 'EMail']"/>  
+    <aura:attribute name="cleanForm" type="Boolean" default="True"/>
+    
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.Initialize}" />	-->
+    
+    <div>
+        <div class="slds-p-around_xx-small">
+            <div class="demo-only" style="padding:0.25rem;background:#16325c">
+                <div class="slds-text-color_inverse">
+                    Join our mailing list to be alerted whenever an unit is announced!
+                </div>
+            </div>
+            <lightning:recordEditForm objectApiName="Lead" density="comfy" 
+                                      onsuccess="{!c.ClearForm}" onError="{!c.ErrorForm}">
+                <lightning:messages /> <!-- Enable automatic error handling -->
+                <aura:if isTrue="{!v.cleanForm}">
+                    <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                        <div class="slds-size_1-of-2">
+                            <div class="slds-box slds-box_xx-small">
+                                <lightning:inputField fieldName="FirstName" />
+                                <lightning:inputField fieldName="LastName" />
+                            </div>
+                        </div>
+                        <div class="slds-size_1-of-2">
+                            <div class="slds-box slds-box_xx-small">
+                                <lightning:inputField fieldName="Email" required="True"/>  
+                                <lightning:inputField fieldName="Company" /> 
+                            </div>    
+                        </div>
+                    </div>
+                    <aura:set attribute="else">
+                        Saving...
+                    </aura:set>
+                </aura:if>
+                <!-- Button Submit Form -->
+                <lightning:button variant="brand" type="Submit" label="Join Mailing List" /> 
+            </lightning:recordEditForm>    
+        </div>
+    </div>    
+</aura:component>

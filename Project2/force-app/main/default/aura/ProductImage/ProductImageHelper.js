@@ -1,0 +1,5 @@
+({
+	OtherProduct : function(component, event) {
+		
+	}
+})

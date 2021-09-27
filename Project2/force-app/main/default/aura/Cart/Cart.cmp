@@ -1,0 +1,51 @@
+<aura:component controller="AuraCartController">
+
+    <aura:attribute name="bCartConfirmed" default="false" type="Boolean" description="If the cart is confirmed, show the payment and shipping details; otherwise, show the cart to make changes."/>
+    
+    <aura:attribute name="draftOrderID" default="ORDER_ID" type="String" description="Used for SOQLing the particular 'cart' associated with this browser session"/>
+
+    <aura:handler name="ToggleCart" event="c:ConfirmCart" action="{!c.toggleCart}"/>
+
+    <div>
+
+        <!--{!v.draftOrderID}-->
+
+        <lightning:layout horizontalAlign="center" verticalAlign="center">
+
+            <lightning:layoutItem>
+                <aura:if isTrue="{!v.bCartConfirmed == false}">
+
+                    <c:CartTable draftOrderID="{!v.draftOrderID}"/>
+
+                    <aura:set attribute="else">
+
+                        <c:PaymentShippingForm draftOrderID="{!v.draftOrderID}"/>
+
+                    </aura:set>
+
+                </aura:if>
+            </lightning:layoutItem>
+
+
+            <lightning:layoutItem padding="around-small" flexibility="auto">
+                <ul>
+                    <li>
+                        <h2 class="slds-text-heading_large">PRODUCT PICTURE</h2>
+                    </li>
+                    <li>
+                        <p>Why does my text keep getting squished over here</p>
+                    </li>
+                    <li>
+                        <c:MiniQuantityEditor/>
+                    </li>
+                </ul>
+            </lightning:layoutItem>
+
+
+        </lightning:layout>
+
+        
+        
+    </div>
+
+</aura:component>

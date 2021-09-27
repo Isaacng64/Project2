@@ -1,0 +1,20 @@
+.THIS .background {
+    border: 3px solid #FFD700;
+    background-color: #E8ECFF;
+    margin: 2px;
+}
+.THIS .x-large {
+    height: 400px;
+}
+.THIS .large {
+    height: 380px;
+    overflow-y: scroll;
+    padding: 1rem;
+}
+.THIS .custom-white {
+    height: 90px;
+    text-align: center;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border: 3px solid #FFD700;
+}
