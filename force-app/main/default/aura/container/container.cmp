@@ -1,0 +1,7 @@
+<aura:component>
+    <aura:attribute name="theOrder" type="Order"/>
+    <aura:handler name="orderEvent" event="c:recieveOrder" action="{!c.handleCmpEvent}" />
+    <c:orderLightningMap orderLocation="{!v.theOrder}" />
+    
+
+</aura:component>
