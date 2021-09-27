@@ -32,5 +32,11 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+
+    <types>
+        <members>Order.bSameAddress__c</members>
+        <name>CustomField</name>
+    </types>
+
     <version>52.0</version>
 </Package>
