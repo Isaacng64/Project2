@@ -5,7 +5,10 @@
     <aura:handler name="init" value="{!this}" action="{!c.readPrd}"/>    
     
     <lightning:datatable keyField="id"
+                         onrowaction="{! c.handleRowAction }"
                          data="{! v.prdList }"
                          columns="{! v.columns }"
-                         hideCheckboxColumn="false"/>
+                         hideCheckboxColumn="true"
+                         />    
+    
 </aura:component>
