@@ -22,7 +22,8 @@
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
-                <c:Cart/>
+                <!--c:Cart/-->
+                <c:mainProductsLayout/>
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">
@@ -30,11 +31,11 @@
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
-                TRACKER
+                <c:CaseTracker/>
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'issues'}">
-                ISSUES
+                <c:CaseMaker/>
             </aura:if>
             
         </lightning:layoutItem>

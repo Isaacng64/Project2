@@ -1,0 +1,17 @@
+<aura:component>
+    <!-- attributes -->
+    <aura:attribute name="orderLocation" type="Order" />
+    <aura:attribute name="orderMarker" type="Object" />
+    <aura:attribute name="zoomLevel" type="Integer" />
+    
+    <aura:handler name="orderEvent" event="c:recieveOrder" action="{!c.handleComponent}" />
+    <div id="searchSect">
+    	<c:orderSearch />
+    </div>
+    <div id="map">
+    	<!-- Map Component -->
+        <aura:if isTrue="{!v.orderLocation != null}">
+            <lightning:map mapMarkers="{!v.orderMarker}" zoomLevel="{!v.zoomLevel}" />
+        </aura:if>
+    </div>
+</aura:component>

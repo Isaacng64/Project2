@@ -38,6 +38,15 @@
         <members>Product2.Units__c</members>
         <members>Product2.inStockQuantity__c</members>
         <members>Product2.ProductImg__c</members>
+
+        <members>Order.LastLocation__c</members>
+
+        <members>Order.Lat__c</members>
+
+        <members>Order.Lon__c</members>
+
+        <members>Order.TrackingNumber__c</members>
+        
         <name>CustomField</name>
     </types>
 
