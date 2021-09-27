@@ -10,10 +10,7 @@
             if(response.getState() == "SUCCESS"){
                 
                 component.set("v.SessionOrderID", response.getReturnValue());
-                alert("successly made cart?");
 
-            }else{
-                alert("did not made cart?");
             }
         });
 
