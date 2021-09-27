@@ -1,0 +1,12 @@
+.THIS {
+   background-color:#708090;
+    color:#000000;
+    background-color:solid;
+    font-weight:bold;
+    border:1px solid #FFD700;
+    width:50%;
+}
+
+.cCaseTracker span{
+    width:50%;
+}

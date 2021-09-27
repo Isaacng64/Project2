@@ -1,0 +1,18 @@
+.THIS {
+    background-color:#708090;
+    color:#000000;
+    background-color:solid;
+    font-weight:bold;
+    border:1px solid #FFD700;
+    width:50%;
+}
+
+.cCaseMaker span {
+ font-weight:bold;
+ font-size:1.5em;
+ line-height:1.5em;
+ margin:0;
+ padding:10px;
+ overflow:hidden
+ 
+}
