@@ -1,5 +1,7 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes">
     
+    <aura:attribute name="mainIdProduct" type="Id"/>
+
     <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
     <aura:handler name="showImage" event="c:PrdClicked" action="{!c.ShowImage}" />
     <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/> 
