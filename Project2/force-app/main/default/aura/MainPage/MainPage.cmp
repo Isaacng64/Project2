@@ -31,7 +31,8 @@
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
-                <c:CaseTracker/>
+                <!--c:CaseTracker/-->
+                <c:orderLightningMap/>
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'issues'}">
