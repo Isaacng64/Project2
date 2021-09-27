@@ -3,5 +3,3 @@
         component.set("v.bCartConfirmed", ! component.get("v.bCartConfirmed"));
     }
 })
-
-    
