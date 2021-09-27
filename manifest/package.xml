@@ -3,6 +3,8 @@
     <types>
         <members>*</members>
         <members>Product2.Units__c</members>
+        <members>Product2.inStockQuantity__c</members>
+        <members>Product2.ProductImg__c</members>
         <members>User.Employee__c</members>
         <name>CustomField</name>
     </types>
