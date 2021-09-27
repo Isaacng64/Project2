@@ -6,5 +6,5 @@
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>SVP, Sales &amp; Marketing</name>
     <opportunityAccessLevel>Edit</opportunityAccessLevel>
-    <parentRole>BossBidetMainRole</parentRole>
+    <parentRole>CEO</parentRole>
 </Role>
