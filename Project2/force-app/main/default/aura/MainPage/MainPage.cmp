@@ -1,8 +1,13 @@
-<aura:component>
+<aura:component controller="AuraCartController">
 
     <aura:attribute name="SelectedPage" type="String" default="promo"/>
 
+    <aura:attribute name="SessionOrderID" type="String" default="OrderID" />
+
+    <aura:handler name="init" value="{! this }" action="{! c.init }"/>
+
     <aura:handler name="Navigation" event="c:Navigation" action="{!c.Navigate}"/>
+
 
     <lightning:layout horizontalAlign="center" verticalAlign="center">
         <lightning:layoutItem padding="around-large">
@@ -22,8 +27,8 @@
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
-                <!--c:Cart/-->
-                <c:mainProductsLayout/>
+                <c:Cart draftOrderID="{!v.SessionOrderID}"/>
+                <!--c:mainProductsLayout/-->
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">

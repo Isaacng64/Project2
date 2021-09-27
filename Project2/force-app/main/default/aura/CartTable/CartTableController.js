@@ -13,8 +13,6 @@
 
         helper.setTableColumnsAndRerender(component);
 
-        helper.initTheCart(component, event);
-
         // get just products in your cart
         helper.getCartProducts(component, event);
 

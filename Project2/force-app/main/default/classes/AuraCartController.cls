@@ -69,8 +69,24 @@ public without sharing class AuraCartController {
     public static String initCart(){
         Order newCart = new Order();
 
+        List<Account> accs = [SELECT id, name FROM Account WHERE name = 'GeneralWebPurchases'];
+
+        Account acc;
+
+        if(accs.size() == 0){
+            acc = new Account();
+            acc.Name = 'GeneralWebPurchases';
+            try{
+                Insert acc;
+            }catch(Exception e){
+                throw new AuraHandledException(e.getMessage());
+            }
+        }else{
+            acc = accs[0];
+        }
+
         newCart.Status = 'Draft';
-        newCart.AccountId = '0015f000005eMt0AAE'; // GenericWebPurchases
+        newCart.AccountId = acc.Id; // GenericWebPurchases
 
         newCart.EffectiveDate = Date.today();
 

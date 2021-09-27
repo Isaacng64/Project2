@@ -1,17 +1,5 @@
 ({
-    initTheCart : function (component, event){
-        let a = component.get("c.initCart");
 
-        a.setCallback(this, function(response){
-            if(response.getState() == "SUCCESS"){
-                
-                component.set("v.draftOrderID", response.getReturnValue());
-
-            }
-        });
-
-        $A.enqueueAction(a);
-    },
     getCartProducts : function(component){
         let a = component.get("c.getCartProducts");
 
