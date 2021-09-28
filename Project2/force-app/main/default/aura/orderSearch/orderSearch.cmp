@@ -3,36 +3,38 @@
     <aura:attribute name="ord" type="Order" />
     
     <aura:registerEvent name="orderEvent" type="c:recieveOrder" />
-    
-    <div id="searchBar">
-        <lightning:card title="Order Tracking">
-            <aura:set attribute="actions" >
-                <lightning:button label="search" onclick="{!c.searchTrigger}" />
-            </aura:set>
-                <lightning:input 
-                    aura:id="order-search-input"
-                    name="order-search-input"
-                    label="Please enter your tracking number, then hit the 'enter' key"
-                    placeholder="000000000000000000"
-                    type="text"
-                />
-        </lightning:card>
-    </div>
-    <div id="detailCard">
-        <lightning:card title="{!v.ord == null ? 'Please submit Order Number' : 'Order Details'}" > 
-       		<force:recordData recordId="{!v.ord.AccountId}" targetFields="{!v.ord}" fields="Name,TrackingNumber__c,Status,LastLocation__c,Lat__c, Lon__c" />
-            <div>
-              	<p> Tracking Number:
-                <lightning:formattedText value="{!v.ord.TrackingNumber__c}" /></p>
-                <p>Current Status:
-                <lightning:formattedText value="{!v.ord.Status}" /></p>
-                <p>Last Location:
-                <lightning:formattedText value="{!v.ord.LastLocation__c}" /></p>
-                <p>Latitude:
-                <lightning:formattedText value="{!v.ord.Lat__c}" /></p>
-                <p>Longitude:
-                <lightning:formattedText value="{!v.ord.Lon__c}" /></p>
-        	</div>
-        </lightning:card>
+    <div class="slds-grid slds-wrap slds-p-around_xx-small">
+        <div class="slds-col slds-size_12-of-12 background">
+            <lightning:card title="Order Tracking">
+                <aura:set attribute="actions" >
+                    <lightning:button class="slds-button slds-button_brand" label="search" onclick="{!c.searchTrigger}" />
+                </aura:set>
+                    <lightning:input 
+                        aura:id="order-search-input"
+                        name="order-search-input"
+                        label="	Please enter your tracking number, then hit the Search button"
+                        placeholder="000000000000000000"
+                        type="text"
+                    />
+            </lightning:card>
+        </div>
+        
+        <div class="slds-col slds-size_12-of-12">
+            <lightning:card title="{!v.ord == null ? 'Please submit Order Number' : 'Order Details'}" > 
+                <force:recordData recordId="{!v.ord.AccountId}" targetFields="{!v.ord}" fields="Name,TrackingNumber__c,Status,LastLocation__c,Lat__c, Lon__c" />
+                <div>
+                    <p>  Tracking Number: 
+                    <lightning:formattedText value="{!v.ord.TrackingNumber__c}" /></p>
+                    <p>	Current Status:
+                    <lightning:formattedText value="{!v.ord.Status}" /></p>
+                    <p>	Last Location:
+                    <lightning:formattedText value="{!v.ord.LastLocation__c}" /></p>
+                    <p>	Latitude:
+                    <lightning:formattedText value="{!v.ord.Lat__c}" /></p>
+                    <p>	Longitude:
+                    <lightning:formattedText value="{!v.ord.Lon__c}" /></p>
+                </div>
+            </lightning:card>
+        </div>
     </div>
 </aura:component>

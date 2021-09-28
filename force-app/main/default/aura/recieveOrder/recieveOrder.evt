@@ -1,4 +1,0 @@
-<!--c:recieveOrder-->
-<aura:event type="COMPONENT">
-    <aura:attribute name="orderEvent" type="Order"/>
-</aura:event>
