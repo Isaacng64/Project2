@@ -25,9 +25,10 @@
 
         if (selected){
             component.set("v.selectedRow", selected);
+            helper.updateMiniQuantityView(selected);
         }
 
-        helper.updateMiniQuantityView(selected);
+        
         
     },
     updateSelectedAmount : function(component, event, helper){

@@ -19,14 +19,15 @@
 
         selectedRow.Quantity += added; // passed by reference
 
-        let a = component.get("c.updateCart");
+        let a = component.get("c.changeCartAmount");
 
-        //component.get("draftOrderID")});
-        a.setParams({"orderID" : component.get("v.draftOrderID"), "productOrOrderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
+        a.setParams({"orderID" : component.get("v.draftOrderID"), "orderItemID" : selectedRow["OrderItemID"], "amount" : selectedRow["Quantity"]});
         
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){
                 console.log(component.get('v.selectedRow').Quantity);
+            }else{
+                alert("failed to change amount");
             }
         });
 

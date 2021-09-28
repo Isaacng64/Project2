@@ -22,7 +22,7 @@
         </div>
         
         <!-- the container element determines the height of the datatable -->
-        <div style="height: 350px">
+        <div style="height: 400px">
             <lightning:datatable
                 columns="{! v.columns }"
                 data="{! v.data }"

@@ -8,8 +8,6 @@
 
     <div>
 
-        <!--{!v.draftOrderID}-->
-
         <lightning:layout horizontalAlign="center" verticalAlign="center">
 
             <lightning:layoutItem>

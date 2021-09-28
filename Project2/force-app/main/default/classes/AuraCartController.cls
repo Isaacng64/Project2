@@ -12,6 +12,7 @@ public without sharing class AuraCartController {
         }
     }
 
+    // weird paramemeter names but don't change them
     @AuraEnabled
     public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
 
@@ -36,6 +37,22 @@ public without sharing class AuraCartController {
         }
         try{
             Upsert item;
+        }
+        catch(Exception e){
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    @AuraEnabled
+    public static void changeCartAmount(String orderID, String orderItemID, Integer amount){
+
+        OrderItem item = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :orderItemID AND orderId = :orderID];
+
+        // item already in cart at least once
+        item.quantity = amount;
+
+        try{
+            Update item;
         }
         catch(Exception e){
             throw new AuraHandledException(e.getMessage());
