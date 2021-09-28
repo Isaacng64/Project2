@@ -1,15 +1,19 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" controller="AuraCartController">
-    
-    <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
-    <aura:handler name="showImage" event="c:PrdClicked" action="{!c.ShowImage}" />
-    <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/> 
-
     <aura:attribute name="draftOrderID" type="String"/>
     <aura:attribute name="SelectedProduct" type="String"/>
-    
+
     <aura:handler name="selectProduct" event="c:SelectProductFromTable" action="{!c.selectProduct}"/>
+ <!--
+	 <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
+    <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/>
+
+    <aura:attribute name="mainIdProduct" type="Id"/>
+    <aura:attribute name="mainIdAppProduct" type="Id"/>
     
-    
+    <aura:handler name="EvtPrdClicked" event="c:PrdClicked" action="{!c.ShowImage}" />
+    <aura:handler event="c:AppPrdClicked" action="{!c.ShowImage}" />
+    -->
+
     <div class="slds-grid slds-grid_vertical background">
         <div class="slds-col background">
             <!-- TOP - 2 COLUMNS, LEFT FOR LIST RIGTH FOR IMAGES -->
@@ -18,18 +22,20 @@
                     <!-- LIST GOES HERE -->
                     <div class="large">
                         <lightning:card title="Products Catalog" iconName="standard:product_service_campaign">
-                            <c:ListProducts/> 
+                            <c:ListProducts/>
                         </lightning:card>
-                    </div>              
+                    </div>
                 </div>
-                <div class="slds-col slds-size_1-of-3">
-                    <c:ProductImage/>
-                    <lightning:button label="Add Item to Cart" onclick="{!c.addToCart}"/>
+                <div class="slds-col slds-size_1-of-3 slds-box">
+                    <lightning:card title="" iconName="utility:image">
+                            <c:ProductImage/>
+                            <lightning:button label="Add Item to Cart" onclick="{!c.addToCart}"/>
+                        </lightning:card>
                 </div>
             </div>
         </div>
         <div class="slds-col slds-size_3-of-3 background slds-box">
             <c:mailingList />
         </div>
-    </div> 
+    </div>
 </aura:component>

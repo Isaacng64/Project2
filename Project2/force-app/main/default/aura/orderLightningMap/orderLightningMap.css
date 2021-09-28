@@ -1,2 +1,14 @@
-.THIS {
+.THIS.background {
+    background-color: #E8ECFF ;
+    margin: 1px;
+    --sds-c-card-color-background: #E8ECFF;
+    --sds-c-card-color-border: #FFD700;
+    --sds-c-button-brand-color-background: #6C88FF;
+    --sds-c-button-brand-color-border: #6C88FF;
+}
+
+.THIS .Map {
+    height: 580px;
+    overflow-y: scroll;
+    padding: 1rem;
 }

@@ -1,0 +1,21 @@
+<aura:component>
+    <aura:attribute name="order" type="Order" access="public" />
+
+    <div>
+        <lightning:card title="{!v.order == null ? 'Please submit Order Number' : v.order.Name}" iconName="standard:order"> 
+            <aura:if isTrue="{!v.order != null}">
+                <lightning:card title="Order Details">
+                    <force:recordData recordId="{!v.order.AccountId}" targetFields="{!v.order}" fields="Name,TrackingNumber__c,Status,LastLocation__c" />
+                    <div>
+                        <p> Tracking Number:
+                        <lightning:formattedText value="{!v.order.TrackingNumber__c}" /></p>
+                        <p>Current Status:
+                        <lightning:formattedText value="{!v.order.Status}" /></p>
+                        <p>Last Location:
+                        <lightning:formattedText value="{!v.order.LastLocation__c}" /></p>
+                    </div>
+                </lightning:card>
+            </aura:if>
+        </lightning:card>
+    </div>
+</aura:component>
