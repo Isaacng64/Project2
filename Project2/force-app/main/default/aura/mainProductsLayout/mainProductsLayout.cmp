@@ -20,8 +20,8 @@
                         </lightning:card>
                     </div>              
                 </div>
-                <div class="slds-col slds-size_1-of-3 slds-box img-box">
-                    <lightning:card title="Product Image" iconName="utility:image">
+                <div class="slds-col slds-size_1-of-3 slds-box">
+                    <lightning:card title="" iconName="utility:image">
                             <c:ProductImage/> 
                         </lightning:card>
                 </div>

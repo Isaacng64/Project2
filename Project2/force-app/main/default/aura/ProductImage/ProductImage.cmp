@@ -1,33 +1,19 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
     
     <aura:attribute name="idSelectedProduct" type="Id"/>
+    <aura:attribute name="nameProduct" type="Id"/>
+    <aura:attribute name="imgSelectedProduct" type="String"/>   
+    <aura:attribute name="pricedProduct" type="Integer"/>
     
     <aura:handler event="c:AppPrdClicked" action="{!c.bringData}" />
     
-
-    
-    <!--
-    <lightning:card title="{! v.IdSelectedProduct == null ? 'Click a Product!' : v.IdSelectedProduct}" iconName="standard:account">
-        
-        <lightning:recordViewForm recordId="01t5f000000HMEOAA4" objectApiName="PriceBookEntry">
-            <div class="slds-box">
-                <lightning:outputField fieldName="Name" />
-                <lightning:outputField fieldName="UnitePrice" />
-                <lightning:outputField fieldName="Pricebook2Id" />
-            </div>
-            
-            <div >    
-                <img src="{!$Resource.Img_Bold_Black_Chrome}" class="center_img"/>
-                <p>{!v.idSelectedProduct}</p>
-            </div>
-            <br/>
-            <h2 class="slds-text-heading_medium slds-text-align_center">Price: 10.000</h2>      
-        </lightning:recordViewForm>
-    </lightning:card>    
-
- -->
-    
-    <p>{!v.idSelectedProduct}</p>
-    
-    
+    <aura:if isTrue="{!v.imgSelectedProduct}">
+        <div class="slds-text-title_caps">
+            <p>Product: {!v.nameProduct}</p>
+        	<br />            
+            <img src="{!v.imgSelectedProduct}" alt="{!v.nameProduct}" class="center_img"/>
+            <br />
+            <p>Price: <lightning:formattedNumber value="{!v.pricedProduct}" style="currency" currencyCode="USD"/></p>
+        </div>   
+    </aura:if>
 </aura:component>

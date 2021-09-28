@@ -37,9 +37,12 @@
                 break;
             case 'show_appdetails':
                 let appEvent = $A.get("e.c:AppPrdClicked");
-                appEvent.setParams({ "idAppProduct" : row.Id });
+                appEvent.setParams({ "idAppProduct" : row.Id,
+                                    "imgProduct" : row.ProductImg__c,
+                                    "nameProduct" : row.Name,
+                                    "priceProduct" : "100"});
                 appEvent.fire();
-                //alert('Showing More Info: ' + JSON.stringify(row) + ' ' + row.Id);
+                //alert('Showing More Info: ' + JSON.stringify(row) + ' ' + row.Id + ' ' + row.ProductCode + ' ' + row.ProductImg__c);
                 break;
         }
     }
