@@ -2,7 +2,8 @@
     readPrdHelper : function(component, event, helper) {
         
         var actions = [
-            { label: 'Show details', name: 'show_details' }            
+            // { label: 'Show details', name: 'show_details' }
+            { label: 'More Details', name: 'show_appdetails' }             
         ]
         component.set('v.columns', [
             { type: 'action', typeAttributes: { rowActions: actions } },
@@ -24,12 +25,24 @@
     },
     
     RowAction: function (component, event, helper) {
-        var action = event.getParam('action');
-        var row = event.getParam('row');
+        let action = event.getParam('action');
+        let row = event.getParam('row');
         
         switch (action.name) {
             case 'show_details':
-                alert('Showing More Info: ' + JSON.stringify(row));
+                let cmpEvent = component.getEvent("EvtPrdClicked");
+                cmpEvent.setParams({ "idProduct" : row.Id });
+                cmpEvent.fire();
+                //alert('Showing More Info: ' + JSON.stringify(row) + ' ' + row.Id);
+                break;
+            case 'show_appdetails':
+                let appEvent = $A.get("e.c:AppPrdClicked");
+                appEvent.setParams({ "idAppProduct" : row.Id,
+                                    "imgProduct" : row.ProductImg__c,
+                                    "nameProduct" : row.Name,
+                                    "priceProduct" : "100"});
+                appEvent.fire();
+                //alert('Showing More Info: ' + JSON.stringify(row) + ' ' + row.Id + ' ' + row.ProductCode + ' ' + row.ProductImg__c);
                 break;
         }
     },

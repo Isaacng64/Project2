@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Event Application">    
+	<aura:attribute name="idAppProduct" type="Id" />
+    <aura:attribute name="imgProduct" type="String" />
+    <aura:attribute name="nameProduct" type="String" />
+    <aura:attribute name="priceProduct" type="Integer" />
+</aura:event>

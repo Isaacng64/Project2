@@ -4,6 +4,9 @@
 
     <aura:registerEvent name="selectProduct" type="c:SelectProductFromTable"/>
     
+    <!-- <aura:registerEvent name="EvtPrdClicked" type="c:PrdClicked"/> --> 
+    <aura:registerEvent name="AppPrdClicked" type="c:AppPrdClicked"/>
+    
     <aura:handler name="init" value="{!this}" action="{!c.readPrd}"/>    
     
     <lightning:datatable keyField="id"

@@ -1,6 +1,6 @@
 ({
-    ShowImage: function (component, event, helper) {
-        helper.UpdateIdProduct(component, event);
+    /*ShowImage: function (component, event, helper) {
+        helper.UpdateIdProduct(component, event);*/
     },
     selectProduct : function(component, event, helper){
         component.set("v.SelectedProduct", event.getParam("id"));
