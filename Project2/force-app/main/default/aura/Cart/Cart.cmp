@@ -28,10 +28,7 @@
             <lightning:layoutItem padding="around-small" flexibility="auto">
                 <ul>
                     <li>
-                        <h2 class="slds-text-heading_large">PRODUCT PICTURE</h2>
-                    </li>
-                    <li>
-                        <p>Why does my text keep getting squished over here</p>
+                        <p>Select an item in the cart table to edit the quantity of that item here.</p>
                     </li>
                     <li>
                         <c:MiniQuantityEditor/>

@@ -26,18 +26,18 @@
             </aura:if>
         </lightning:layoutItem>
 
-        <lightning:layoutItem>
+        <!--lightning:layoutItem>
             <aura:text value=" Cart " />
-        </lightning:layoutItem>
+        </lightning:layoutItem-->
             
         <lightning:layoutItem>
             <lightning:button variant="success" label="+" onclick="{!c.addValue}" value="1"/>
         
         </lightning:layoutItem>
 
-        <lightning:layoutItem>
+        <!--lightning:layoutItem>
             <lightning:button variant="brand" label="View Cart"/>
-        </lightning:layoutItem>
+        </lightning:layoutItem-->
         
     </lightning:layout>
     
