@@ -1,14 +1,15 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes" controller="AuraCartController">
-
-    <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
-    <aura:handler name="showImage" event="c:PrdClicked" action="{!c.ShowImage}" />
-    <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/>
-
     <aura:attribute name="draftOrderID" type="String"/>
     <aura:attribute name="SelectedProduct" type="String"/>
 
     <aura:handler name="selectProduct" event="c:SelectProductFromTable" action="{!c.selectProduct}"/>
+ <!--
+	 <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
+    <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/>
 
+    <aura:attribute name="mainIdProduct" type="Id"/>
+    <aura:attribute name="mainIdAppProduct" type="Id"/>
+    
     <aura:handler name="EvtPrdClicked" event="c:PrdClicked" action="{!c.ShowImage}" />
     <aura:handler event="c:AppPrdClicked" action="{!c.ShowImage}" />
     -->
