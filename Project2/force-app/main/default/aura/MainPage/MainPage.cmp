@@ -1,4 +1,4 @@
-<aura:component controller="AuraCartController">
+<aura:component controller="AuraCartController" implements="forceCommunity:availableForAllPageTypes" access="global">
 
     <aura:attribute name="SelectedPage" type="String" default="promo"/>
 
@@ -8,53 +8,56 @@
 
     <aura:handler name="Navigation" event="c:Navigation" action="{!c.Navigate}"/>
 
+    <div style="background-color: rgba(0, 38, 255, 0.315);">
+        <lightning:layout horizontalAlign="center" verticalAlign="center">
+            <lightning:layoutItem padding="around-large">
+                <h1 class="slds-text-heading_large">Sample App Header Banner Thing</h1>
+            </lightning:layoutItem>
+        </lightning:layout>
+    
+        <lightning:layout>
+    
+            <lightning:layoutItem padding="around-small" flexibility="shrink">
+                <c:Navbar/>
+            </lightning:layoutItem>
+    
+            <lightning:layoutItem padding="around-small" flexibility="auto">
+                <aura:if isTrue="{!v.SelectedPage == 'promo'}">
+                    <c:PromoPage/>
+                </aura:if>
+    
+                <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
+                    <c:mainProductsLayout draftOrderID="{!v.SessionOrderID}"/>
+                </aura:if>
+    
+                <aura:if isTrue="{!v.SelectedPage == 'cart'}">
+                    <c:Cart draftOrderID="{!v.SessionOrderID}"/>
+                </aura:if>
+    
+                <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">
+                    <c:UpcomingProducts/>
+                </aura:if>
+    
+                <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
+                    <!--c:CaseTracker/-->
+                    <c:orderLightningMap/>
+                </aura:if>
+    
+                <aura:if isTrue="{!v.SelectedPage == 'issues'}">
+                    <c:CaseMaker/>
+                </aura:if>
+                
+            </lightning:layoutItem>
+    
+        </lightning:layout>
+    
+        <lightning:layout horizontalAlign="center" verticalAlign="center">
+            <lightning:layoutItem>
+                <h1 class="slds-text-heading_large">other stuff down here like the contact form</h1>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </div>
 
-    <lightning:layout horizontalAlign="center" verticalAlign="center">
-        <lightning:layoutItem padding="around-large">
-            <h1 class="slds-text-heading_large">Sample App Header Banner Thing</h1>
-        </lightning:layoutItem>
-    </lightning:layout>
-
-    <lightning:layout>
-
-        <lightning:layoutItem padding="around-small" flexibility="shrink">
-            <c:Navbar/>
-        </lightning:layoutItem>
-
-        <lightning:layoutItem padding="around-small" flexibility="auto">
-            <aura:if isTrue="{!v.SelectedPage == 'promo'}">
-                <c:PromoPage/>
-            </aura:if>
-
-            <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
-                <c:mainProductsLayout draftOrderID="{!v.SessionOrderID}"/>
-            </aura:if>
-
-            <aura:if isTrue="{!v.SelectedPage == 'cart'}">
-                <c:Cart draftOrderID="{!v.SessionOrderID}"/>
-            </aura:if>
-
-            <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">
-                <c:UpcomingProducts/>
-            </aura:if>
-
-            <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
-                <!--c:CaseTracker/-->
-                <c:orderLightningMap/>
-            </aura:if>
-
-            <aura:if isTrue="{!v.SelectedPage == 'issues'}">
-                <c:CaseMaker/>
-            </aura:if>
-            
-        </lightning:layoutItem>
-
-    </lightning:layout>
-
-    <lightning:layout horizontalAlign="center" verticalAlign="center">
-        <lightning:layoutItem>
-            <h1 class="slds-text-heading_large">other stuff down here like the contact form</h1>
-        </lightning:layoutItem>
-    </lightning:layout>
+    
 
 </aura:component>
