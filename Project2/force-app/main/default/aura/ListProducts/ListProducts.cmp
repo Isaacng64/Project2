@@ -2,6 +2,9 @@
     <aura:attribute name="prdList" type="Product2[]"/>
     <aura:attribute name="columns" type="List"/>
     
+    <!-- <aura:registerEvent name="EvtPrdClicked" type="c:PrdClicked"/> --> 
+    <aura:registerEvent name="AppPrdClicked" type="c:AppPrdClicked"/>
+    
     <aura:handler name="init" value="{!this}" action="{!c.readPrd}"/>    
     
     <lightning:datatable keyField="id"

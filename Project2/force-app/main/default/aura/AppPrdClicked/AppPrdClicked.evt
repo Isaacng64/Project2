@@ -1,0 +1,3 @@
+<aura:event type="APPLICATION" description="Event Application">    
+	<aura:attribute name="idAppProduct" type="Id" />
+</aura:event>

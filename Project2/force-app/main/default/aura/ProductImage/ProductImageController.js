@@ -1,7 +1,8 @@
 ({
-	showImage : function(component, event, helper) {
-		//var Id = row.Id;
-        var idPrd = event.getParam('v.Product');
-        alert('Showing Details: ' + JSON.stringify(idPrd));
-	}
+    bringData : function(component, event) { 
+        //helper.changeProduct(component, event); 	
+        let newAppIdProduct = event.getParam("idAppProduct");
+        //alert('Product in Main App Image Prd : ' + newAppIdProduct);
+        component.set("v.idSelectedProduct", newAppIdProduct);         
+    }
 })

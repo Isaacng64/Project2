@@ -1,15 +1,13 @@
 <aura:component implements="flexipage:availableForAllPageTypes" access="global" >
-    <aura:attribute name="Product" type="List"/>
     
-    <!-- To be able to send an event, we must first register the event with the component -->
-    <aura:registerEvent name="PrdClicked" type="c:PrdClicked" />
+    <aura:attribute name="idSelectedProduct" type="Id"/>
     
-    <aura:handler name="init" value="{!this}" action="{!c.showImage}"/>  
-    <!-- To be able to handle an event, we need to use the handler and specify what event we want to handle-->
-    <aura:handler name="clickPrd" event="c:PrdClicked" action="{!c.ShowOtherProduct}" />
+    <aura:handler event="c:AppPrdClicked" action="{!c.bringData}" />
     
-    <!-- <lightning:card title="Name" iconName="standard:account"> -->
-    <lightning:card title="{!v.IdProduct == null ? 'Click a Product!' : v.IdProduct}" iconName="standard:account">
+
+    
+    <!--
+    <lightning:card title="{! v.IdSelectedProduct == null ? 'Click a Product!' : v.IdSelectedProduct}" iconName="standard:account">
         
         <lightning:recordViewForm recordId="01t5f000000HMEOAA4" objectApiName="PriceBookEntry">
             <div class="slds-box">
@@ -20,11 +18,16 @@
             
             <div >    
                 <img src="{!$Resource.Img_Bold_Black_Chrome}" class="center_img"/>
-                <p>"{!v.IdProduct}"</p>
+                <p>{!v.idSelectedProduct}</p>
             </div>
             <br/>
             <h2 class="slds-text-heading_medium slds-text-align_center">Price: 10.000</h2>      
         </lightning:recordViewForm>
-    </lightning:card>        
+    </lightning:card>    
+
+ -->
+    
+    <p>{!v.idSelectedProduct}</p>
+    
     
 </aura:component>

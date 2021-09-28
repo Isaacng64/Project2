@@ -1,5 +1,5 @@
 ({
-    ShowImage: function (component, event, helper) {
+    /*ShowImage: function (component, event, helper) {
         helper.UpdateIdProduct(component, event);
-    }    
+    } */   
 })

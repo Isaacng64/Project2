@@ -1,9 +1,12 @@
 <aura:component implements="forceCommunity:availableForAllPageTypes">
     
-    <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
-    <aura:handler name="showImage" event="c:PrdClicked" action="{!c.ShowImage}" />
-    <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/> 
+    <!--
+	<aura:attribute name="mainIdProduct" type="Id"/>
+    <aura:attribute name="mainIdAppProduct" type="Id"/>
     
+    <aura:handler name="EvtPrdClicked" event="c:PrdClicked" action="{!c.ShowImage}" />
+    <aura:handler event="c:AppPrdClicked" action="{!c.ShowImage}" />
+    -->
     
     <div class="slds-grid slds-grid_vertical background">
         <div class="slds-col background">
@@ -17,8 +20,10 @@
                         </lightning:card>
                     </div>              
                 </div>
-                <div class="slds-col slds-size_1-of-3">
-                    <c:ProductImage/> 
+                <div class="slds-col slds-size_1-of-3 slds-box img-box">
+                    <lightning:card title="Product Image" iconName="utility:image">
+                            <c:ProductImage/> 
+                        </lightning:card>
                 </div>
             </div>
         </div>
