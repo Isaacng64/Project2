@@ -1,4 +1,4 @@
-<aura:application extends="force:slds" >
+<aura:application extends="force:slds">
     <div>
         <c:orderLightningMap />
     </div>
