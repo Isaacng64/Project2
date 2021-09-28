@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" access=
+"global" controller="OrderMapController">
+    <!-- attributes -->
+    <aura:attribute name="orderLocation" type="Order" />
+    <aura:attribute name="orderMarker" type="Object" />
+    <aura:attribute name="zoomLevel" type="Integer" />
+
+    <aura:handler name="mapHandler" value="{!this}" action="{!c.initialize}" />
+    
+    <!-- Map Component -->
+    <aura:if isTrue="{!v.orderLocation != null}">
+        <lightning:map mapMarkers="{!v.orderMarkers}" zoomLevel="{!v.zoomLevel}" showFooter="true" zoomControl="true" />
+    </aura:if>
+</aura:component>	
+<!--Ligtning map, untested, connect to other auras later-->

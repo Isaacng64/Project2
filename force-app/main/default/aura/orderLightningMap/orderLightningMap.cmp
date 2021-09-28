@@ -1,0 +1,26 @@
+<aura:component>
+    <!-- attributes -->
+    <aura:attribute name="orderLocation" type="Order" />
+    <aura:attribute name="orderMarker" type="Object" />
+    <aura:attribute name="zoomLevel" type="Integer" />
+    
+    <aura:handler name="orderEvent" event="c:recieveOrder" action="{!c.handleComponent}" />
+    <div class="slds-grid slds-wrap background">
+        <div class="slds-col slds-size_1-of-2">
+            <div class="searchSect">
+                <c:orderSearch />
+            </div>
+        </div>
+            
+		<div class="slds-col slds-size_1-of-2 slds-p-around_xx-small">
+            <div class="map">
+                <!-- Map Component -->
+                <lightning:card title="Map">
+                    <aura:if isTrue="{!v.orderLocation != null}">
+                    	<lightning:map mapMarkers="{!v.orderMarker}" zoomLevel="{!v.zoomLevel}" />
+                    </aura:if>
+                </lightning:card>
+            </div>
+        </div>
+	</div>
+</aura:component>
