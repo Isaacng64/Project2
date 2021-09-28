@@ -1,8 +1,13 @@
-<aura:component implements="forceCommunity:availableForAllPageTypes">
+<aura:component implements="forceCommunity:availableForAllPageTypes" controller="AuraCartController">
     
     <aura:registerevent name="idProductClicked" type="c.PrdClicked" />
     <aura:handler name="showImage" event="c:PrdClicked" action="{!c.ShowImage}" />
     <aura:handler name="init" value="{!this}" action="{!c.ShowImage}"/> 
+
+    <aura:attribute name="draftOrderID" type="String"/>
+    <aura:attribute name="SelectedProduct" type="String"/>
+    
+    <aura:handler name="selectProduct" event="c:SelectProductFromTable" action="{!c.selectProduct}"/>
     
     
     <div class="slds-grid slds-grid_vertical background">
@@ -18,7 +23,8 @@
                     </div>              
                 </div>
                 <div class="slds-col slds-size_1-of-3">
-                    <c:ProductImage/> 
+                    <c:ProductImage/>
+                    <lightning:button label="Add Item to Cart" onclick="{!c.addToCart}"/>
                 </div>
             </div>
         </div>

@@ -27,8 +27,11 @@
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'catalog'}">
+                <c:mainProductsLayout draftOrderID="{!v.SessionOrderID}"/>
+            </aura:if>
+
+            <aura:if isTrue="{!v.SelectedPage == 'cart'}">
                 <c:Cart draftOrderID="{!v.SessionOrderID}"/>
-                <!--c:mainProductsLayout/-->
             </aura:if>
 
             <aura:if isTrue="{!v.SelectedPage == 'upcoming'}">

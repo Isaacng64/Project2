@@ -15,10 +15,14 @@ public without sharing class AuraCartController {
     @AuraEnabled
     public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
 
-        OrderItem item = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+        List<OrderItem> items = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+        OrderItem item;
 
-        if (item != null){
+        PricebookEntry entry = [SELECT id, Product2id FROM PricebookEntry WHERE Product2id = :productOrOrderItemID];
+
+        if (items.size() != 0){
             // item already in cart at least once
+            item = items[0];
             item.quantity = amount;
 
         }else{
@@ -27,6 +31,8 @@ public without sharing class AuraCartController {
             item.quantity = amount;
             item.product2id = productOrOrderItemID;
             item.orderId = orderID;
+            item.pricebookentryid = entry.Id;
+            item.unitprice = 1;
         }
         try{
             Upsert item;
@@ -34,7 +40,6 @@ public without sharing class AuraCartController {
         catch(Exception e){
             throw new AuraHandledException(e.getMessage());
         }
-        
     }
 
     
@@ -87,6 +92,7 @@ public without sharing class AuraCartController {
 
         newCart.Status = 'Draft';
         newCart.AccountId = acc.Id; // GenericWebPurchases
+        newCart.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
 
         newCart.EffectiveDate = Date.today();
 
@@ -118,13 +124,6 @@ public without sharing class AuraCartController {
     //public static Integer numWrappers = 0;
     public class Wrapper{
 
-        /*
-        @AuraEnabled
-        public Product2 prod; // what is difference from this and using/not using {set;get;} ????
-        @AuraEnabled
-        public OrderItem oi;
-        */
-
         @AuraEnabled
         public String Name;
         @AuraEnabled
@@ -141,12 +140,6 @@ public without sharing class AuraCartController {
         public String id;
 
         public Wrapper(Product2 prod, OrderItem oi){
-            //numWrappers += 1;
-            //id = 'osifd0923a' + numWrappers;
-
-            //this.prod = prod;
-            //this.oi = oi;
-
             Name = prod.Name;
             Description = prod.Description;
             ProductCode = prod.ProductCode;

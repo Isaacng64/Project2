@@ -32,5 +32,19 @@
                 alert('Showing More Info: ' + JSON.stringify(row));
                 break;
         }
+    },
+    selectProduct : function(component, event){
+        let selectedRows = event.getParam('selectedRows');
+        let selected = selectedRows[0];
+
+        console.log("updateSelected has been fired!");
+
+        //alert(selected.Id);
+
+        if (selected){
+            let e = component.getEvent("selectProduct");
+            e.setParams({"id": selected.Id});
+            e.fire();
+        }
     }
 })

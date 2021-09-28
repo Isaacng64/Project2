@@ -1,6 +1,8 @@
 <aura:component controller="ProductsController">
     <aura:attribute name="prdList" type="Product2[]"/>
     <aura:attribute name="columns" type="List"/>
+
+    <aura:registerEvent name="selectProduct" type="c:SelectProductFromTable"/>
     
     <aura:handler name="init" value="{!this}" action="{!c.readPrd}"/>    
     
@@ -8,7 +10,8 @@
                          onrowaction="{! c.handleRowAction }"
                          data="{! v.prdList }"
                          columns="{! v.columns }"
-                         hideCheckboxColumn="true"
+                         onrowselection="{!c.selectProduct}"
+                         maxRowSelection="1"
                          />    
     
 </aura:component>
