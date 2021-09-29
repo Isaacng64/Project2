@@ -1,4 +1,4 @@
-<aura:component controller="AuraCartController">
+<aura:component controller="AuraCartController" implements="forceCommunity:availableForAllPageTypes">
 
     <aura:attribute name="SelectedPage" type="String" default="promo"/>
 
