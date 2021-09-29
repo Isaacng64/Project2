@@ -4,19 +4,69 @@
 		<members>*</members>
 		<name>ApexClass</name>
 	</types>
+	
 	<types>
 		<members>*</members>
 		<name>ApexComponent</name>
 	</types>
+	
 	<types>
-		<members>*</members>
+		<members>AppPrdClicked</members>
+		<members>Cart</members>
+		<members>CartTable</members>
+		<members>CaseMaker</members>
+		<members>caseResult</members>
+		<members>caseResultList</members>
+		<members>CaseTracker</members>
+		<members>ConfirmCart</members>
+
+		<members>container</members>
+		<members>ListProducts</members>
+		<members>mailingList</members>
+		<members>mainOnlyProducts</members>
+
+		<members>MainPage</members>
+
+		<!--members>mainProductsLayout</members-->
+
+		<members>MiniQuantityEditor</members>
+		<members>Navbar</members>
+		<members>Navigation</members>
+		<members>orderCard</members>
+
+		<members>orderLightningMap</members>
+		<members>orderMap</members>
+		<members>orderSearch</members>
+		<members>PaymentShippingForm</members>
+		<members>PrdClicked</members>
+
+		<members>ProductImage</members>
+		<members>Project2Harness</members>
+		<members>PromoPage</members>
+		<members>recieveOrder</members>
+		<members>SelectProductFromTable</members>
+		<members>testApp</members>
+		<members>UpcomingProducts</members>
+		<members>UpdateCartQuantity</members>
+
+
 		<name>AuraDefinitionBundle</name>
 	</types>
+	
 	<types>
 		<members>Order.LastLocation__c</members>
 		<members>Order.Lat__c</members>
 		<members>Order.Lon__c</members>
 		<members>Order.TrackingNumber__c</members>
+
+		<members>Order.Card_number__c</members>
+		<members>Order.Email__c</members>
+		<members>Order.Experation_Date__c</members>
+		<members>Order.First_Name__c</members>
+		<members>Order.Last_Name__c</members>
+
+		<members>Order.bSameAddress__c</members>
+
 		<name>CustomField</name>
 	</types>
 	<version>51.0</version>

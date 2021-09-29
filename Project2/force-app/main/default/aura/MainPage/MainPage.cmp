@@ -11,7 +11,7 @@
     <div style="background-color: rgba(0, 38, 255, 0.315);">
         <lightning:layout horizontalAlign="center" verticalAlign="center">
             <lightning:layoutItem padding="around-large">
-                <h1 class="slds-text-heading_large">Sample App Header Banner Thing</h1>
+                <h1 class="slds-text-heading_large">Boss Bidet Customer Site</h1>
             </lightning:layoutItem>
         </lightning:layout>
     
@@ -39,7 +39,6 @@
                 </aura:if>
     
                 <aura:if isTrue="{!v.SelectedPage == 'tracker'}">
-                    <!--c:CaseTracker/-->
                     <c:orderLightningMap/>
                 </aura:if>
     
@@ -57,7 +56,6 @@
             </lightning:layoutItem>
         </lightning:layout>
     </div>
-
     
 
 </aura:component>

@@ -30,7 +30,7 @@
             <lightning:layoutItem padding="around-small" flexibility="auto">
                 <ul>
                     <li>
-                        <lightning:input label="Add Product by Product Code" title="Hit Enter to Confirm" oncommit="{!c.addProductByCodeJS}"/> <!--onchange="{!c.setProductCode}"/ value="{!v.selectedProductCode}" -->
+                        <lightning:input label="Add Product by Product Code" title="Hit Enter to Confirm" oncommit="{!c.addProductByCodeJS}"/>
                     </li>
                     <li>
                         <p>Select an item in the cart table to edit the quantity of that item here.</p>
