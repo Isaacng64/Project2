@@ -1,0 +1,26 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global">
+
+    <div class="slds-grid slds-grid_vertical background">
+        <div class="slds-col background">
+            <!-- TOP - 2 COLUMNS, LEFT FOR LIST RIGTH FOR IMAGES -->
+            <div class="slds-grid slds-wrap slds-size_2-of-3">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_6-of-12 slds-large-size_8-of-12">
+                    <!-- LIST GOES HERE -->
+                    <div class="large">
+                        <lightning:card title="Products Catalog" iconName="standard:product_service_campaign">
+                            <c:ListProducts/> 
+                        </lightning:card>
+                    </div>              
+                </div>
+                <div class="slds-col slds-size_1-of-3 slds-box">
+                    <lightning:card title="" iconName="utility:image">
+                            <c:ProductImage/> 
+                        </lightning:card>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_3-of-3 background slds-box">
+            <c:mailingList />
+        </div>
+    </div> 
+</aura:component>
