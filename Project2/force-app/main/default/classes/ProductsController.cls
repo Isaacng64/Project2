@@ -1,4 +1,4 @@
-public with sharing class ProductsController {
+public without sharing class ProductsController {
     @AuraEnabled
     public static List <Product2> readProducts() {
         //Query products

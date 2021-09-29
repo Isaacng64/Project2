@@ -2,9 +2,15 @@ public without sharing class AuraCartController {
 
     @AuraEnabled
     public static void removeItem(String orderID, String productOrOrderItemID){
-        OrderItem item = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+
+        List<OrderItem> items = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+
+        if (items.size() == 0){
+            items = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE product2id = :productOrOrderItemID AND orderId = :orderID];
+        }
 
         try{
+            OrderItem item = items[0];
             Delete item;
         }
         catch(Exception e){
@@ -12,31 +18,87 @@ public without sharing class AuraCartController {
         }
     }
 
-    // weird paramemeter names but don't change them
+    //manually add a product in the cart basically instead of using the catalog interface
+    @AuraEnabled
+    public static void addProductByCode(String orderID, String productCode){
+
+        try{
+            List<Product2> prods = [SELECT Id, ProductCode FROM Product2 WHERE ProductCode = :productCode];
+
+            if(prods.size() > 0){
+
+                Product2 prod = prods[0];
+                ID prId = prod.Id;
+                //updateCart(orderID, prod.Id, 1);
+
+                // literally copy pasted since you can't call an auraenabled function from another RIP RIP RIP RIP
+
+                List<PricebookEntry> entries = [SELECT id, Product2id, Pricebook2Id FROM PricebookEntry WHERE Product2id = :prId];
+                PricebookEntry entry;
+                if (entries.size() == 1){
+
+                    if(entries[0].Pricebook2Id != [SELECT ID FROM Pricebook2 WHERE IsStandard = true][0].Id){
+                        entry = new PricebookEntry();
+                        entry.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
+                        entry.Product2Id = prId;
+                        entry.UnitPrice = 10;
+                        entry.IsActive = true;
+                        Insert entry;
+                    }else{
+                        entry = entries[0];
+                    }
+                }else{
+                    entry = new PricebookEntry();
+                    entry.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
+                    entry.Product2Id = prId;
+                    entry.UnitPrice = 10;
+                    entry.IsActive = true;
+                    Insert entry;
+                }
+                OrderItem item;
+                item = new OrderItem();
+                item.quantity = 1;
+                item.product2id = prId;
+                item.orderId = orderID;
+                item.pricebookentryid = entry.Id;
+                item.unitprice = 1;
+
+                Insert item;
+            }
+        }catch (Exception e){
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
+    // weird paramemeter names but don't change them, this function is to 'add new item' to the cart
     @AuraEnabled
     public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
 
-        List<OrderItem> items = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
+        //List<OrderItem> items = [SELECT id, quantity, product2id, orderId FROM OrderItem WHERE id = :productOrOrderItemID AND orderId = :orderID];
         OrderItem item;
 
-        PricebookEntry entry = [SELECT id, Product2id FROM PricebookEntry WHERE Product2id = :productOrOrderItemID];
-
-        if (items.size() != 0){
-            // item already in cart at least once
-            item = items[0];
-            item.quantity = amount;
-
+        List<PricebookEntry> entries = [SELECT id, Product2id FROM PricebookEntry WHERE Product2id = :productOrOrderItemID];
+        PricebookEntry entry;
+        if (entries.size()>0){
+            entry = entries[0];
         }else{
-            //item not at all in cart yet
-            item = new OrderItem();
-            item.quantity = amount;
-            item.product2id = productOrOrderItemID;
-            item.orderId = orderID;
-            item.pricebookentryid = entry.Id;
-            item.unitprice = 1;
+            entry = new PricebookEntry();
+            entry.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
+            entry.Product2Id = productOrOrderItemID;
+            entry.UnitPrice = 10;
+            entry.IsActive = true;
+            Insert entry;
         }
+
+        item = new OrderItem();
+        item.quantity = amount;
+        item.product2id = productOrOrderItemID;
+        item.orderId = orderID;
+        item.pricebookentryid = entry.Id;
+        item.unitprice = 1;
+
         try{
-            Upsert item;
+            Insert item;
         }
         catch(Exception e){
             throw new AuraHandledException(e.getMessage());

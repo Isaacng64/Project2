@@ -29,8 +29,7 @@
                 <div class="slds-col slds-size_1-of-3 slds-box">
                     <lightning:card title="" iconName="utility:image">
                             <c:ProductImage/>
-                            <lightning:button label="Add Item to Cart" onclick="{!c.addToCart}"/>
-                        </lightning:card>
+                    </lightning:card>
                 </div>
             </div>
         </div>

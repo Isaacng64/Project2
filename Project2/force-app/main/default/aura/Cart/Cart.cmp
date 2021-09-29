@@ -6,6 +6,8 @@
 
     <aura:handler name="ToggleCart" event="c:ConfirmCart" action="{!c.toggleCart}"/>
 
+    <aura:attribute name="selectedProductCode" type="String"/>
+
     <div>
 
         <lightning:layout horizontalAlign="center" verticalAlign="center">
@@ -27,6 +29,9 @@
 
             <lightning:layoutItem padding="around-small" flexibility="auto">
                 <ul>
+                    <li>
+                        <lightning:input label="Add Product by Product Code" title="Hit Enter to Confirm" oncommit="{!c.addProductByCodeJS}"/> <!--onchange="{!c.setProductCode}"/ value="{!v.selectedProductCode}" -->
+                    </li>
                     <li>
                         <p>Select an item in the cart table to edit the quantity of that item here.</p>
                     </li>
