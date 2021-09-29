@@ -21,10 +21,51 @@ public without sharing class AuraCartController {
     //manually add a product in the cart basically instead of using the catalog interface
     @AuraEnabled
     public static void addProductByCode(String orderID, String productCode){
-        try {
-            Product2 prod = [SELECT Id, ProductCode FROM Product2 WHERE ProductCode = :productCode];
-            updateCart(orderID, prod.Id, 1);
-        } catch (Exception e) {
+
+        try{
+            List<Product2> prods = [SELECT Id, ProductCode FROM Product2 WHERE ProductCode = :productCode];
+
+            if(prods.size() > 0){
+
+                Product2 prod = prods[0];
+                ID prId = prod.Id;
+                //updateCart(orderID, prod.Id, 1);
+
+                // literally copy pasted since you can't call an auraenabled function from another RIP RIP RIP RIP
+
+                List<PricebookEntry> entries = [SELECT id, Product2id, Pricebook2Id FROM PricebookEntry WHERE Product2id = :prId];
+                PricebookEntry entry;
+                if (entries.size() == 1){
+
+                    if(entries[0].Pricebook2Id != [SELECT ID FROM Pricebook2 WHERE IsStandard = true][0].Id){
+                        entry = new PricebookEntry();
+                        entry.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
+                        entry.Product2Id = prId;
+                        entry.UnitPrice = 10;
+                        entry.IsActive = true;
+                        Insert entry;
+                    }else{
+                        entry = entries[0];
+                    }
+                }else{
+                    entry = new PricebookEntry();
+                    entry.Pricebook2Id = [SELECT Id, IsStandard FROM Pricebook2 WHERE IsStandard = true][0].Id;
+                    entry.Product2Id = prId;
+                    entry.UnitPrice = 10;
+                    entry.IsActive = true;
+                    Insert entry;
+                }
+                OrderItem item;
+                item = new OrderItem();
+                item.quantity = 1;
+                item.product2id = prId;
+                item.orderId = orderID;
+                item.pricebookentryid = entry.Id;
+                item.unitprice = 1;
+
+                Insert item;
+            }
+        }catch (Exception e){
             throw new AuraHandledException(e.getMessage());
         }
     }

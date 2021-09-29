@@ -63,7 +63,7 @@
     },
     removeRow : function(component, row){
         let a = component.get("c.removeItem");
-        a.setParams({"orderID" : component.get("v.draftOrderID"), "productOrOrderItemID" : row.OrderItemID})
+        a.setParams({"orderID" : component.get("v.draftOrderID"), "productOrOrderItemID" : row.OrderItemID});
 
         a.setCallback(this, function(response){
             if(response.getState() == "SUCCESS"){

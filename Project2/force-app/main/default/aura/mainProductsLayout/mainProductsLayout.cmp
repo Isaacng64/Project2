@@ -24,7 +24,6 @@
                 </div>
                 <div class="slds-col slds-size_1-of-3">
                     <c:ProductImage/>
-                    <lightning:button label="Add Item to Cart" onclick="{!c.addToCart}"/>
                 </div>
             </div>
         </div>

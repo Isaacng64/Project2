@@ -130,11 +130,22 @@ public without sharing class TestAuraCartController {
     @isTest
     public static void testAddItemViaCode(){
         ID ord = AuraCartController.initCart();
-        AuraCartController.addProductByCode(ord, '3209587xksa');
+
+        Product2 a = [SELECT ID, ProductCode FROM Product2][0];
+
+        AuraCartController.addProductByCode((String)ord, (String)a.ProductCode);
 
         Order ordr = [SELECT Id, (SELECT id, Product2Id, Quantity FROM OrderItems) FROM Order WHERE Id = :ord];
 
         System.assert(ordr.OrderItems.size() > 0, 'Did not add order item to order');
+
+        Boolean val = false;
+        for(OrderItem item : ordr.OrderItems){
+            if(item.Product2Id == a.Id){
+                val = true;
+            }     
+        }
+        System.assert(val, 'Did not add correct product');
     }
 
 }
