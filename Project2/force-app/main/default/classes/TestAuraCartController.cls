@@ -8,6 +8,7 @@ public without sharing class TestAuraCartController {
         prod.Name = 'name';
         prod.IsActive = true;
         prod.Units__c = 'Bold White Chrome';
+        prod.ProductCode = '3209587xksa';
 
         Insert prod;
         
@@ -124,6 +125,16 @@ public without sharing class TestAuraCartController {
         ordr = [SELECT Id, bSameAddress__c FROM Order WHERE Id = :ord];
 
         System.assert(ordr.bSameAddress__c);
+    }
+
+    @isTest
+    public static void testAddItemViaCode(){
+        ID ord = AuraCartController.initCart();
+        AuraCartController.addProductByCode(ord, '3209587xksa');
+
+        Order ordr = [SELECT Id, (SELECT id, Product2Id, Quantity FROM OrderItems) FROM Order WHERE Id = :ord];
+
+        System.assert(ordr.OrderItems.size() > 0, 'Did not add order item to order');
     }
 
 }

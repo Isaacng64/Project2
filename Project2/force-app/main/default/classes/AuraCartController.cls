@@ -18,6 +18,17 @@ public without sharing class AuraCartController {
         }
     }
 
+    //manually add a product in the cart basically instead of using the catalog interface
+    @AuraEnabled
+    public static void addProductByCode(String orderID, String productCode){
+        try {
+            Product2 prod = [SELECT Id, ProductCode FROM Product2 WHERE ProductCode = :productCode];
+            updateCart(orderID, prod.Id, 1);
+        } catch (Exception e) {
+            throw new AuraHandledException(e.getMessage());
+        }
+    }
+
     // weird paramemeter names but don't change them, this function is to 'add new item' to the cart
     @AuraEnabled
     public static void updateCart(String orderID, String productOrOrderItemID, Integer amount){
