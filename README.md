@@ -1,14 +1,21 @@
-# Salesforce DX Project: Next Steps
+# Project 2 Team Synergy
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Welcome to our Project.
 
-## How Do You Plan to Deploy Your Changes?
+We Implemented Aura Components in a Project transfered from Team Amplifire - BossBiddet
+https://github.com/sgillogly/P1BossBidet
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Team Synergy
 
-## Configure Your Salesforce DX Project
+Vicky, John, Joseph, Isaac 
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+## Configuration before your deploy the project in your Org.
+
+#### Enable Digital Experiences
+From Setup: Feature Settings > Digital Experiences > Settings: Enable
+
+#### Adjust Organization Wide Defaults
+From Setup: Security > Sharing Settings: Set the OWD's for Case and Opportunity to Private
 
 ## Read All About It
 
