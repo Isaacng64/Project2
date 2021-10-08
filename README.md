@@ -1,25 +1,50 @@
-# Project 2 Team Synergy
+# BOSS BIDET EXPERIENCE SITE
 
-Welcome to our Project.
+https://docs.google.com/presentation/d/1wsVoN4MCLvOIY11k4-U_mH4r6rSuQvDIlshSI2gFa-s/edit#slide=id.gf4eaf07424_0_0
 
-We Implemented Aura Components in a Project transfered from Team Amplifire - BossBiddet
-https://github.com/sgillogly/P1BossBidet
+## Project Description
 
-## Team Synergy
+Experience Site Upgraded with an impactful User Interface, publicly visible to spread the information about your company in an attractive manner.
 
-Vicky, John, Joseph, Isaac 
+## Technologies Used
 
-## Configuration before your deploy the project in your Org.
+* Tech 1 - version 1.0
+* Tech 2 - version 2.0
+* Tech 3 - version 3.0
 
-#### Enable Digital Experiences
-From Setup: Feature Settings > Digital Experiences > Settings: Enable
+## Features
 
-#### Adjust Organization Wide Defaults
-From Setup: Security > Sharing Settings: Set the OWD's for Case and Opportunity to Private
+List of features ready and TODOs for future development
+* Awesome feature 1
+* Awesome feature 2
+* Awesome feature 3
 
-## Read All About It
+To-do list:
+* Wow improvement to be done 1
+* Wow improvement to be done 2
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+## Getting Started
+   
+(include git clone command)
+(include all environment setup steps)
+
+> Be sure to include BOTH Windows and Unix command  
+> Be sure to mention if the commands only work on a specific platform (eg. AWS, GCP)
+
+- All the `code` required to get started
+- Images of what it should look like
+
+## Usage
+
+> Here, you instruct other people on how to use your project after they’ve installed it. This would also be a good place to include screenshots of your project in action.
+
+## Contributors
+
+* Alix Victoria Perez
+* Isaac Lopez
+* John Jarog
+* Joseph Wertzberger 
+
+## License
+
+This project uses the following license: [<license_name>](<link>).
