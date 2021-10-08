@@ -8,19 +8,23 @@ Experience Site Upgraded with an impactful User Interface, publicly visible to s
 
 ## Technologies Used
 
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* Lightning Component Framework (Aura)
+* Apex
+* SOQL
+* Service Cloud
+* JavaScript
+* Experience Cloud
+* Lightning Data Service
 
 ## Features
 
 List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
+* Catalog
+* Shopping Cart
+* Order Tracker
 
 To-do list:
-* Wow improvement to be done 1
+* 1
 * Wow improvement to be done 2
 
 ## Getting Started
